@@ -1,0 +1,531 @@
+@font-face {
+  font-family: "Mulish";
+  src: url("assets/fonts/Mulish-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("assets/fonts/Mulish-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("assets/fonts/Mulish-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("assets/fonts/Mulish-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("assets/fonts/Mulish-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("assets/fonts/Mulish-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("assets/fonts/Mulish-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("assets/fonts/Mulish-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TenorSans";
+  src: url("assets/fonts/TenorSans.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("assets/fonts/Merriweather-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: normal;
+  flex-shrink: 0;
+  border: none;
+}
+
+:root {
+  --font-primary: "Mulish";
+  --font-accent: "TenorSans";
+  --color-beige: #f6f2e8;
+  --color-dark: #353536;
+  --color-melange: #b3b1a9;
+  font-family: var(--font-primary);
+}
+
+.container {
+  padding-inline: clamp(37px, 3.65vw, 70px);
+}
+
+.accent {
+  font-family: var(--font-accent);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  padding: clamp(5px, 0.52vw, 10px) clamp(37px, 3.65vw, 70px);
+  color: white;
+}
+
+.header-nav-list {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 1.56vw, 30px);
+  font-family: var(--font-primary);
+  font-size: clamp(7px, 0.73vw, 14px);
+  font-weight: 700;
+}
+
+.header-logo {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3px, 0.26vw, 5px);
+  align-items: center;
+}
+
+.header-logo-img {
+  width: clamp(118px, 11.56vw, 222px);
+  height: clamp(33px, 3.23vw, 62px);
+}
+
+.header-logo-text {
+  font-family: "Merriweather";
+  font-size: clamp(9px, 0.83vw, 16px);
+  font-weight: 300;
+}
+
+.stars {
+  display: flex;
+}
+
+.header-contacts {
+  display: flex;
+  align-items: center;
+  gap: clamp(23px, 2.29vw, 44px);
+  font-family: var(--font-primary);
+}
+
+.header-address {
+  font-size: clamp(7px, 0.68vw, 13px);
+  font-weight: 500;
+}
+
+.header-phone {
+  font-size: clamp(7px, 0.73vw, 14px);
+  font-weight: 700;
+}
+
+.header-book-btn {
+  font-size: clamp(8px, 0.78vw, 15px);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: clamp(12px, 1.2vw, 23px) clamp(22px, 2.14vw, 41px)
+    clamp(12px, 1.15vw, 22px) clamp(22px, 2.14vw, 41px);
+  border-radius: clamp(27px, 2.6vw, 50px);
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: clamp(33px, 3.44vw, 66px);
+}
+
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.hero-bg::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 24%);
+}
+
+.hero-bg::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.5) 0%, transparent 44%);
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5px, 0.52vw, 10px);
+  color: white;
+}
+
+.hero-label {
+  font-family: var(--font-accent);
+  font-size: clamp(10px, 1.04vw, 20px);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: var(--font-accent);
+  font-size: clamp(32px, 3.33vw, 64px);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.hero-desc {
+  margin-top: clamp(5px, 0.52vw, 10px);
+  font-size: clamp(8px, 0.83vw, 16px);
+  line-height: 135%;
+  font-weight: 500;
+}
+
+.hero-booking {
+  padding-right: clamp(20px, 2.08vw, 40px);
+  width: auto;
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding-block: clamp(15px, 1.56vw, 30px);
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.hero-booking-field {
+  color: white;
+  border-right: 1px solid rgba(255, 255, 255, 0.35);
+  padding-inline: clamp(5px, 0.52vw, 10px);
+  display: flex;
+  align-items: center;
+  gap: clamp(15px, 1.56vw, 30px);
+  justify-content: space-between;
+}
+
+.hero-booking-field-btn {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hero-booking-field-value {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-booking-field-label {
+  font-size: clamp(6px, 0.63vw, 12px);
+  line-height: 135%;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.hero-booking-field-display {
+  font-size: clamp(8px, 0.78vw, 15px);
+  line-height: 135%;
+  font-weight: 700;
+}
+
+.hero-booking-field-icon {
+  width: clamp(12px, 1.25vw, 24px);
+  height: clamp(12px, 1.25vw, 24px);
+  flex-shrink: 0;
+}
+
+.hero-booking-field-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.hero-booking-btn {
+  padding: clamp(12px, 1.25vw, 24px) clamp(25px, 2.6vw, 50px)
+    clamp(12px, 1.2vw, 23px) clamp(25px, 2.6vw, 50px);
+  background-color: white;
+  color: black;
+  font-size: clamp(7px, 0.68vw, 13px);
+  font-weight: 700;
+  border-radius: clamp(25px, 2.6vw, 50px);
+  text-transform: uppercase;
+  margin-left: clamp(10px, 1.04vw, 20px);
+}
+
+.rooms {
+  background-color: var(--color-beige);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 160px;
+  overflow: hidden;
+}
+
+.rooms-header {
+  text-align: center;
+}
+
+.rooms-title {
+  color: var(--color-dark);
+  font-size: 64px;
+  line-height: 120%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 100px;
+}
+
+.rooms-title::after {
+  content: "НОМЕРА";
+  z-index: -1;
+  font-size: 390px;
+  color: #ebe7dc;
+}
+
+.rooms-subtitle {
+  color: var(--color-melange);
+  font-size: 64px;
+  line-height: 120%;
+  position: relative;
+  z-index: 10;
+}
+
+.rooms-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rooms-tabs {
+  padding: 8px;
+  display: flex;
+  gap: 8px;
+  background-color: var(--color-melange);
+  border-radius: 50px;
+}
+
+.rooms-tab {
+  background: transparent;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 50px;
+}
+
+.rooms-tab.active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.rooms-slider {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rooms-item {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 43vw 34vw;
+  gap: 30px;
+}
+
+.rooms-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rooms-card-image {
+  width: 100%;
+  aspect-ratio: 1.45;
+  position: relative;
+}
+
+.rooms-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rooms-card-name {
+  position: absolute;
+  left: 0;
+  bottom: 10%;
+  color: white;
+  font-size: 30px;
+  line-height: 120%;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  padding: 18px 18px 18px 20px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 68px;
+}
+
+.rooms-card-name.second {
+  padding-right: 30px;
+}
+
+.rooms-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.rooms-card-btn img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.rooms-slider-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.rooms-slider-btn {
+  width: 46px;
+  height: 46px;
+  border: 1px solid black;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.rooms-slider-btn.prev svg {
+  transform: rotate(180deg);
+}
+
+.rooms-slider-btn:disabled {
+  color: #b4b2ab;
+  border: 1px solid #b4b2ab;
+}
+
+.rooms-item-desc {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.rooms-item-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rooms-item-square {
+  background-color: rgba(34, 34, 34, 0.35);
+  color: white;
+  color: 14px;
+  font-weight: 600;
+}
+
+.rooms-item-square .number {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.rooms-item-square .number sup {
+  font-size: 14px;
+}
+
+.rooms-item-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}

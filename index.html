@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Чехов — Бутик-отель</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="header-nav">
+        <ul class="header-nav-list">
+          <li><a href="#rooms">Номера</a></li>
+          <li><a href="#about">О гостинице</a></li>
+          <li><a href="#privileges">Привилегии</a></li>
+          <li><a href="#partners">Партнёры</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+          <li><a href="#map">Карта</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-logo">
+        <a href="/">
+          <img
+            class="header-logo-img"
+            src="assets/icons/logo.svg"
+            alt="Чехов бутик-отель"
+          />
+        </a>
+        <span class="header-logo-text">бутик-отель</span>
+        <div class="stars">
+          <svg
+            width="14"
+            height="13"
+            viewBox="0 0 14 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+              fill="white"
+            />
+          </svg>
+          <svg
+            width="14"
+            height="13"
+            viewBox="0 0 14 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+              fill="white"
+            />
+          </svg>
+          <svg
+            width="14"
+            height="13"
+            viewBox="0 0 14 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+              fill="white"
+            />
+          </svg>
+          <svg
+            width="14"
+            height="13"
+            viewBox="0 0 14 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="header-contacts">
+        <address class="header-address">
+          г. Таганрог,<br />ул. Петровская, 68-А
+        </address>
+        <a class="header-phone" href="tel:88001234560">8 800 123 456 00</a>
+        <button class="header-book-btn">Забронировать</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-bg">
+          <img src="assets/images/bg_1.jpg" alt="Интерьер гостиницы Чехов" />
+        </div>
+
+        <div class="hero-content container">
+          <p class="hero-label">Гостиница «Чехов»</p>
+          <h1 class="hero-title">
+            Ваш ключ<br />
+            к безупречному отдыху<br />
+            в сердце Таганрога
+          </h1>
+          <p class="hero-desc">
+            Современный интерьер от дизайнеров,<br />
+            удобные номера и привилегии<br />
+            в ресторанах партнёров
+          </p>
+        </div>
+
+        <div class="hero-booking container">
+          <div class="hero-booking-field">
+            <div class="hero-booking-field-value">
+              <span class="hero-booking-field-label">Заезд</span>
+              <span class="hero-booking-field-display" id="checkin-display"
+                >10.05.2026</span
+              >
+            </div>
+            <button
+              class="hero-booking-field-btn"
+              type="button"
+              onclick="document.getElementById('checkin').showPicker()"
+            >
+              <img
+                src="assets/icons/calendar.svg"
+                alt="Выбрать дату заезда"
+                class="hero-booking-field-icon"
+              />
+            </button>
+            <input
+              type="date"
+              id="checkin"
+              name="checkin"
+              value="2026-05-10"
+              class="hero-booking-field-input"
+            />
+          </div>
+          <div class="hero-booking-field">
+            <div class="hero-booking-field-value">
+              <span class="hero-booking-field-label">Выезд</span>
+              <span class="hero-booking-field-display" id="checkout-display"
+                >21.05.2026</span
+              >
+            </div>
+            <button
+              class="hero-booking-field-btn"
+              type="button"
+              onclick="document.getElementById('checkout').showPicker()"
+            >
+              <img
+                src="assets/icons/calendar.svg"
+                alt="Выбрать дату выезда"
+                class="hero-booking-field-icon"
+              />
+            </button>
+            <input
+              type="date"
+              id="checkout"
+              name="checkout"
+              value="2026-05-21"
+              class="hero-booking-field-input"
+            />
+          </div>
+          <div class="hero-booking-field">
+            <div class="hero-booking-field-value">
+              <span class="hero-booking-field-label">Гости</span>
+              <span class="hero-booking-field-display"
+                >2 взрослых, 0 детей</span
+              >
+            </div>
+            <button class="hero-booking-field-btn" type="button">
+              <img
+                src="assets/icons/user.svg"
+                alt="Гости"
+                class="hero-booking-field-icon"
+              />
+            </button>
+          </div>
+          <button class="hero-booking-btn" type="button">Найти номер</button>
+        </div>
+
+        <script>
+          function formatDate(value) {
+            if (!value) return "";
+            const [y, m, d] = value.split("-");
+            return d + "." + m + "." + y;
+          }
+
+          document
+            .getElementById("checkin")
+            .addEventListener("change", function () {
+              document.getElementById("checkin-display").textContent =
+                formatDate(this.value);
+            });
+
+          document
+            .getElementById("checkout")
+            .addEventListener("change", function () {
+              document.getElementById("checkout-display").textContent =
+                formatDate(this.value);
+            });
+        </script>
+      </section>
+      <section class="rooms" id="rooms">
+        <div class="rooms-header container">
+          <h2 class="rooms-title accent">Все категории<br />номеров:</h2>
+          <p class="rooms-subtitle accent">
+            От уютного стандарта<br />до просторных семейных люксов
+          </p>
+        </div>
+
+        <div class="rooms-content container">
+          <div class="rooms-tabs">
+            <button class="rooms-tab active" type="button">Стандарт</button>
+            <button class="rooms-tab" type="button">Комфорт</button>
+            <button class="rooms-tab" type="button">Полулюкс</button>
+            <button class="rooms-tab" type="button">Люкс</button>
+            <button class="rooms-tab" type="button">Семейный люкс</button>
+          </div>
+          <ul class="rooms-slider">
+            <li class="rooms-item">
+              <div class="rooms-card main">
+                <figure class="rooms-card-image">
+                  <img src="/assets/images/room-1.png" alt="Стандарт 1" />
+                  <figcaption class="rooms-card-name accent">
+                    Стандарт
+                    <button class="rooms-card-btn" title="Подробнее">
+                      <img src="/assets/icons/arrow.svg" alt="" />
+                    </button>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="rooms-card second">
+                <figure class="rooms-card-image">
+                  <img src="/assets/images/room-2.png" alt="Стандарт 1" />
+                  <figcaption class="rooms-card-name accent second">
+                    Стандарт
+                  </figcaption>
+                </figure>
+                <nav class="rooms-slider-controls">
+                  <button disabled class="rooms-slider-btn prev">
+                    <svg
+                      width="10"
+                      height="9"
+                      viewBox="0 0 10 9"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_62_138)">
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M10.0004 4.49015C9.99784 4.32454 9.92228 4.1692 9.79515 4.06835L6.10821 0.164873C6.01081 0.061841 5.8778 0.00298702 5.73834 0.00126036C5.59899 -0.000478625 5.46454 0.0550333 5.3648 0.155599C5.26502 0.256164 5.20801 0.393508 5.20633 0.53751C5.20466 0.681501 5.25843 0.8202 5.35581 0.923221L8.22066 3.95602H0.548606C0.40801 3.95393 0.272344 4.01025 0.172228 4.11216C0.072014 4.2142 0.0156369 4.35337 0.015625 4.49861C0.015625 4.64386 0.072014 4.78312 0.17224 4.88506C0.272344 4.98706 0.40801 5.04331 0.548594 5.04131H8.22068L5.35581 8.0741C5.25841 8.17713 5.20466 8.31584 5.20633 8.45983C5.20801 8.60379 5.26493 8.74116 5.36478 8.84173C5.46454 8.94229 5.5989 8.99787 5.73834 8.99608C5.87779 8.99433 6.01081 8.93547 6.10821 8.83237L9.79716 4.92703C9.92755 4.82247 10.0029 4.66076 10.0004 4.49034V4.49015Z"
+                          fill="currentColor"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_62_138">
+                          <rect width="10" height="9" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                  <button class="rooms-slider-btn next">
+                    <svg
+                      width="10"
+                      height="9"
+                      viewBox="0 0 10 9"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_62_138)">
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M10.0004 4.49015C9.99784 4.32454 9.92228 4.1692 9.79515 4.06835L6.10821 0.164873C6.01081 0.061841 5.8778 0.00298702 5.73834 0.00126036C5.59899 -0.000478625 5.46454 0.0550333 5.3648 0.155599C5.26502 0.256164 5.20801 0.393508 5.20633 0.53751C5.20466 0.681501 5.25843 0.8202 5.35581 0.923221L8.22066 3.95602H0.548606C0.40801 3.95393 0.272344 4.01025 0.172228 4.11216C0.072014 4.2142 0.0156369 4.35337 0.015625 4.49861C0.015625 4.64386 0.072014 4.78312 0.17224 4.88506C0.272344 4.98706 0.40801 5.04331 0.548594 5.04131H8.22068L5.35581 8.0741C5.25841 8.17713 5.20466 8.31584 5.20633 8.45983C5.20801 8.60379 5.26493 8.74116 5.36478 8.84173C5.46454 8.94229 5.5989 8.99787 5.73834 8.99608C5.87779 8.99433 6.01081 8.93547 6.10821 8.83237L9.79716 4.92703C9.92755 4.82247 10.0029 4.66076 10.0004 4.49034V4.49015Z"
+                          fill="currentColor"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_62_138">
+                          <rect width="10" height="9" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                </nav>
+              </div>
+              <div class="rooms-item-desc">
+                <div class="rooms-item-info">
+                  <div class="rooms-item-square">
+                    <img src="/assets/icons/expand.svg" alt="" />
+                    Площадь
+                    <span class="number">59 м<sup>2</sup></span>
+                  </div>
+                  <p class="rooms-item-price">
+                    от <span class="number">20 117</span> ₽/сутки
+                  </p>
+                </div>
+                <div class="rooms-item-details">
+                  <ul class="rooms-item-facility">
+                    <li>
+                      <img src="/assets/icons/bed.svg" alt="" />
+                      1 большая кровать
+                    </li>
+                    <li>
+                      <img src="/assets/icons/balcony.svg" alt="" />
+                      Балкон
+                    </li>
+                    <li>
+                      <img src="/assets/icons/shower.svg" alt="" />
+                      Душ
+                    </li>
+                  </ul>
+                  <ul class="rooms-item-facility">
+                    <li>
+                      <img src="/assets/icons/wifi.svg" alt="" />
+                      Бесплатный Wi-Fi
+                    </li>
+                    <li>
+                      <img src="/assets/icons/safe.svg" alt="" />
+                      Сейф
+                    </li>
+                    <li>
+                      <img src="/assets/icons/wine.svg" alt="" />
+                      Бар
+                    </li>
+                  </ul>
+                  <button class="rooms-item-book-btn">Забронировать</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
