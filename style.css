@@ -114,14 +114,27 @@
 .header {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   position: fixed;
   z-index: 1000;
   top: 0;
   left: 0;
   padding: clamp(5px, 0.52vw, 10px) clamp(37px, 3.65vw, 70px);
   color: white;
+  transition: all 0.3s ease;
+}
+
+.header-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header.dark {
+  background-color: rgba(53, 53, 54, 0.35);
+  backdrop-filter: blur(20px);
 }
 
 .header-nav-list {
@@ -133,7 +146,7 @@
   font-weight: 700;
 }
 
-.header-logo {
+.header-logo-additional {
   display: flex;
   flex-direction: column;
   gap: clamp(3px, 0.26vw, 5px);
@@ -149,10 +162,22 @@
   font-family: "Merriweather";
   font-size: clamp(9px, 0.83vw, 16px);
   font-weight: 300;
+  transition: opacity 0.3s ease;
+}
+
+.header.dark .header-logo-text {
+  opacity: 0;
+  height: 0;
 }
 
 .stars {
   display: flex;
+  transition: opacity 0.3s ease;
+}
+
+.header.dark .stars {
+  opacity: 0;
+  height: 0;
 }
 
 .header-contacts {
@@ -337,7 +362,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 160px;
+  padding-top: clamp(80px, 8.33vw, 160px);
   overflow: hidden;
 }
 
@@ -347,25 +372,25 @@
 
 .rooms-title {
   color: var(--color-dark);
-  font-size: 64px;
+  font-size: clamp(32px, 3.33vw, 64px);
   line-height: 120%;
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 10;
-  margin-bottom: 100px;
+  margin-bottom: clamp(50px, 5.21vw, 100px);
 }
 
 .rooms-title::after {
   content: "НОМЕРА";
   z-index: -1;
-  font-size: 390px;
+  font-size: clamp(120px, 20.31vw, 390px);
   color: #ebe7dc;
 }
 
 .rooms-subtitle {
   color: var(--color-melange);
-  font-size: 64px;
+  font-size: clamp(32px, 3.33vw, 64px);
   line-height: 120%;
   position: relative;
   z-index: 10;
@@ -376,12 +401,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: clamp(32px, 3.125vw, 60px);
 }
 
 .rooms-tabs {
-  padding: 8px;
+  padding: clamp(4px, 0.42vw, 8px);
   display: flex;
-  gap: 8px;
+  gap: clamp(4px, 0.42vw, 8px);
   background-color: var(--color-melange);
   border-radius: 50px;
 }
@@ -389,9 +415,9 @@
 .rooms-tab {
   background: transparent;
   color: white;
-  font-size: 14px;
+  font-size: clamp(7px, 0.73vw, 14px);
   font-weight: 700;
-  padding: 12px 28px;
+  padding: clamp(6px, 0.63vw, 12px) clamp(14px, 1.46vw, 28px);
   border-radius: 50px;
 }
 
@@ -411,7 +437,7 @@
   display: grid;
   justify-items: center;
   grid-template-columns: 43vw 34vw;
-  gap: 30px;
+  gap: clamp(15px, 1.56vw, 30px);
 }
 
 .rooms-card {
@@ -438,46 +464,47 @@
   left: 0;
   bottom: 10%;
   color: white;
-  font-size: 30px;
+  font-size: clamp(15px, 1.56vw, 30px);
   line-height: 120%;
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(20px);
-  padding: 18px 18px 18px 20px;
+  padding: clamp(9px, 0.94vw, 18px) clamp(9px, 0.94vw, 18px)
+    clamp(9px, 0.94vw, 18px) clamp(10px, 1.04vw, 20px);
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   display: flex;
   align-items: center;
-  gap: 68px;
+  gap: clamp(24px, 3.54vw, 68px);
 }
 
 .rooms-card-name.second {
-  padding-right: 30px;
+  padding-right: clamp(15px, 1.56vw, 30px);
 }
 
 .rooms-card-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
+  width: clamp(32px, 2.4vw, 46px);
+  height: clamp(32px, 2.4vw, 46px);
   background-color: white;
   border-radius: 50%;
 }
 
 .rooms-card-btn img {
-  width: 12px;
-  height: 12px;
+  width: clamp(8px, 0.63vw, 12px);
+  height: clamp(8px, 0.63vw, 12px);
   object-fit: contain;
 }
 
 .rooms-slider-controls {
   display: flex;
-  gap: 5px;
+  gap: clamp(3px, 0.26vw, 5px);
 }
 
 .rooms-slider-btn {
-  width: 46px;
-  height: 46px;
+  width: clamp(32px, 2.4vw, 46px);
+  height: clamp(32px, 2.4vw, 46px);
   border: 1px solid black;
   color: black;
   border-radius: 50%;
@@ -500,6 +527,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: clamp(15px, 1.56vw, 30px);
 }
 
 .rooms-item-info {
@@ -512,20 +540,83 @@
 .rooms-item-square {
   background-color: rgba(34, 34, 34, 0.35);
   color: white;
-  color: 14px;
+  font-size: clamp(7px, 0.73vw, 14px);
   font-weight: 600;
+  padding: clamp(2px, 0.21vw, 4px) clamp(9px, 0.94vw, 18px);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: clamp(5px, 0.52vw, 10px);
+  text-transform: uppercase;
 }
 
 .rooms-item-square .number {
-  font-size: 22px;
+  font-size: clamp(11px, 1.15vw, 22px);
   font-weight: 700;
+  text-transform: none;
 }
 
 .rooms-item-square .number sup {
-  font-size: 14px;
+  font-size: clamp(7px, 0.73vw, 14px);
+}
+
+.rooms-item-price {
+  color: var(--color-dark);
+  font-size: clamp(15px, 1.56vw, 30px);
+  line-height: 130%;
+  font-weight: 500;
+}
+
+.rooms-item-price .number {
+  font-size: clamp(18px, 1.88vw, 36px);
+  font-weight: 600;
 }
 
 .rooms-item-details {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(30px, 4.95vw, 95px);
+}
+
+.rooms-item-facility {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 0.63vw, 12px);
+  font-size: clamp(8px, 0.83vw, 16px);
+  line-height: 135%;
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.rooms-item-facility li {
+  display: flex;
+  align-items: center;
+  gap: clamp(9px, 0.94vw, 18px);
+}
+
+.rooms-item-facility li img {
+  width: clamp(12px, 1.25vw, 24px);
+  height: clamp(12px, 1.25vw, 24px);
+  object-fit: contain;
+}
+
+.rooms-item-book-btn {
+  font-size: clamp(7px, 0.68vw, 13px);
+  font-weight: 700;
+  color: white;
+  background-color: var(--color-dark);
+  padding: clamp(12px, 1.25vw, 24px) clamp(38px, 3.91vw, 75px);
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 1023px) {
+  .container,
+  .header {
+    padding-inline: 2vw;
+  }
+
+  .hero {
+    max-height: 600px;
+  }
 }

@@ -8,25 +8,36 @@
   </head>
   <body>
     <header class="header">
-      <nav class="header-nav">
-        <ul class="header-nav-list">
-          <li><a href="#rooms">Номера</a></li>
-          <li><a href="#about">О гостинице</a></li>
-          <li><a href="#privileges">Привилегии</a></li>
-          <li><a href="#partners">Партнёры</a></li>
-          <li><a href="#contacts">Контакты</a></li>
-          <li><a href="#map">Карта</a></li>
-        </ul>
-      </nav>
+      <div class="header-top">
+        <nav class="header-nav">
+          <ul class="header-nav-list">
+            <li><a href="#rooms">Номера</a></li>
+            <li><a href="#about">О гостинице</a></li>
+            <li><a href="#privileges">Привилегии</a></li>
+            <li><a href="#partners">Партнёры</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+            <li><a href="#map">Карта</a></li>
+          </ul>
+        </nav>
 
-      <div class="header-logo">
-        <a href="/">
+        <a class="header-logo" href="/">
           <img
             class="header-logo-img"
             src="assets/icons/logo.svg"
             alt="Чехов бутик-отель"
           />
         </a>
+
+        <div class="header-contacts">
+          <address class="header-address">
+            г. Таганрог,<br />ул. Петровская, 68-А
+          </address>
+          <a class="header-phone" href="tel:88001234560">8 800 123 456 00</a>
+          <button class="header-book-btn">Забронировать</button>
+        </div>
+      </div>
+
+      <div class="header-logo-additional">
         <span class="header-logo-text">бутик-отель</span>
         <div class="stars">
           <svg
@@ -78,14 +89,6 @@
             />
           </svg>
         </div>
-      </div>
-
-      <div class="header-contacts">
-        <address class="header-address">
-          г. Таганрог,<br />ул. Петровская, 68-А
-        </address>
-        <a class="header-phone" href="tel:88001234560">8 800 123 456 00</a>
-        <button class="header-book-btn">Забронировать</button>
       </div>
     </header>
 
@@ -179,28 +182,6 @@
           </div>
           <button class="hero-booking-btn" type="button">Найти номер</button>
         </div>
-
-        <script>
-          function formatDate(value) {
-            if (!value) return "";
-            const [y, m, d] = value.split("-");
-            return d + "." + m + "." + y;
-          }
-
-          document
-            .getElementById("checkin")
-            .addEventListener("change", function () {
-              document.getElementById("checkin-display").textContent =
-                formatDate(this.value);
-            });
-
-          document
-            .getElementById("checkout")
-            .addEventListener("change", function () {
-              document.getElementById("checkout-display").textContent =
-                formatDate(this.value);
-            });
-        </script>
       </section>
       <section class="rooms" id="rooms">
         <div class="rooms-header container">
@@ -335,5 +316,6 @@
         </div>
       </section>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
