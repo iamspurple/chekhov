@@ -94,8 +94,9 @@
 
 :root {
   --font-primary: "Mulish";
-  --font-accent: "TenorSans";
+  --font-heading: "TenorSans";
   --color-beige: #f6f2e8;
+  --color-skin: #fff0d7;
   --color-dark: #353536;
   --color-melange: #b3b1a9;
   font-family: var(--font-primary);
@@ -105,10 +106,18 @@
   padding-inline: clamp(37px, 3.65vw, 70px);
 }
 
-.accent {
-  font-family: var(--font-accent);
+.heading {
+  font-family: var(--font-heading);
   font-weight: 300;
   text-transform: uppercase;
+}
+
+.accent {
+  color: var(--color-melange);
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 .header {
@@ -142,8 +151,21 @@
   align-items: center;
   gap: clamp(16px, 1.56vw, 30px);
   font-family: var(--font-primary);
-  font-size: clamp(7px, 0.73vw, 14px);
+  font-size: clamp(11px, 0.73vw, 14px);
   font-weight: 700;
+  text-transform: uppercase;
+}
+
+.header-nav-list li a {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
+  transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+  .header-nav-list li a:hover {
+    border-color: white;
+  }
 }
 
 .header-logo-additional {
@@ -156,11 +178,12 @@
 .header-logo-img {
   width: clamp(118px, 11.56vw, 222px);
   height: clamp(33px, 3.23vw, 62px);
+  transform: translateX(10%);
 }
 
 .header-logo-text {
   font-family: "Merriweather";
-  font-size: clamp(9px, 0.83vw, 16px);
+  font-size: clamp(11px, 0.83vw, 16px);
   font-weight: 300;
   transition: opacity 0.3s ease;
 }
@@ -188,24 +211,33 @@
 }
 
 .header-address {
-  font-size: clamp(7px, 0.68vw, 13px);
+  font-size: clamp(11px, 0.68vw, 13px);
   font-weight: 500;
 }
 
 .header-phone {
-  font-size: clamp(7px, 0.73vw, 14px);
+  font-size: clamp(11px, 0.73vw, 14px);
   font-weight: 700;
 }
 
 .header-book-btn {
-  font-size: clamp(8px, 0.78vw, 15px);
+  font-size: clamp(12px, 0.78vw, 15px);
   font-weight: 700;
   text-transform: uppercase;
-  padding: clamp(12px, 1.2vw, 23px) clamp(22px, 2.14vw, 41px)
-    clamp(12px, 1.15vw, 22px) clamp(22px, 2.14vw, 41px);
+  padding: clamp(14px, 1.2vw, 23px) clamp(28px, 2.14vw, 41px)
+    clamp(14px, 1.15vw, 22px) clamp(28px, 2.14vw, 41px);
   border-radius: clamp(27px, 2.6vw, 50px);
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .header-book-btn:hover {
+    background-color: white;
+    color: var(--color-dark);
+  }
 }
 
 .hero {
@@ -264,14 +296,14 @@
 }
 
 .hero-label {
-  font-family: var(--font-accent);
-  font-size: clamp(10px, 1.04vw, 20px);
+  font-family: var(--font-heading);
+  font-size: clamp(12px, 1.04vw, 20px);
   font-weight: 300;
   text-transform: uppercase;
 }
 
 .hero-title {
-  font-family: var(--font-accent);
+  font-family: var(--font-heading);
   font-size: clamp(32px, 3.33vw, 64px);
   font-weight: 300;
   text-transform: uppercase;
@@ -279,7 +311,7 @@
 
 .hero-desc {
   margin-top: clamp(5px, 0.52vw, 10px);
-  font-size: clamp(8px, 0.83vw, 16px);
+  font-size: clamp(12px, 0.83vw, 16px);
   line-height: 135%;
   font-weight: 500;
 }
@@ -292,6 +324,7 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   padding-block: clamp(15px, 1.56vw, 30px);
   background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
 }
 
 .hero-booking-field {
@@ -319,21 +352,21 @@
 }
 
 .hero-booking-field-label {
-  font-size: clamp(6px, 0.63vw, 12px);
+  font-size: clamp(10px, 0.63vw, 12px);
   line-height: 135%;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.65);
 }
 
 .hero-booking-field-display {
-  font-size: clamp(8px, 0.78vw, 15px);
+  font-size: clamp(12px, 0.78vw, 15px);
   line-height: 135%;
   font-weight: 700;
 }
 
 .hero-booking-field-icon {
-  width: clamp(12px, 1.25vw, 24px);
-  height: clamp(12px, 1.25vw, 24px);
+  width: clamp(16px, 1.25vw, 24px);
+  height: clamp(16px, 1.25vw, 24px);
   flex-shrink: 0;
 }
 
@@ -346,15 +379,23 @@
 }
 
 .hero-booking-btn {
-  padding: clamp(12px, 1.25vw, 24px) clamp(25px, 2.6vw, 50px)
-    clamp(12px, 1.2vw, 23px) clamp(25px, 2.6vw, 50px);
+  padding: clamp(16px, 1.25vw, 24px) clamp(30px, 2.6vw, 50px)
+    clamp(16px, 1.2vw, 23px) clamp(30px, 2.6vw, 50px);
   background-color: white;
   color: black;
-  font-size: clamp(7px, 0.68vw, 13px);
+  font-size: clamp(11px, 0.68vw, 13px);
   font-weight: 700;
   border-radius: clamp(25px, 2.6vw, 50px);
   text-transform: uppercase;
   margin-left: clamp(10px, 1.04vw, 20px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+  .hero-booking-btn:hover {
+    background-color: var(--color-skin);
+  }
 }
 
 .rooms {
@@ -362,12 +403,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
   padding-top: clamp(80px, 8.33vw, 160px);
   overflow: hidden;
+  position: relative;
+  padding-bottom: 200px;
+}
+
+.rooms::after {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 0;
 }
 
 .rooms-header {
   text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
 .rooms-title {
@@ -402,12 +460,14 @@
   flex-direction: column;
   align-items: center;
   gap: clamp(32px, 3.125vw, 60px);
+  position: relative;
+  z-index: 10;
 }
 
 .rooms-tabs {
-  padding: clamp(4px, 0.42vw, 8px);
+  padding: 8px;
   display: flex;
-  gap: clamp(4px, 0.42vw, 8px);
+  gap: 8px;
   background-color: var(--color-melange);
   border-radius: 50px;
 }
@@ -415,10 +475,18 @@
 .rooms-tab {
   background: transparent;
   color: white;
-  font-size: clamp(7px, 0.73vw, 14px);
+  font-size: 14px;
   font-weight: 700;
-  padding: clamp(6px, 0.63vw, 12px) clamp(14px, 1.46vw, 28px);
+  padding: 12px 28px;
   border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .rooms-tab:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
 }
 
 .rooms-tab.active {
@@ -436,7 +504,7 @@
 .rooms-item {
   display: grid;
   justify-items: center;
-  grid-template-columns: 43vw 34vw;
+  grid-template-columns: min(50vw, 840px) min(40vw, 670px);
   gap: clamp(15px, 1.56vw, 30px);
 }
 
@@ -445,12 +513,29 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  perspective: 1000px;
 }
 
 .rooms-card-image {
   width: 100%;
   aspect-ratio: 1.45;
   position: relative;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  transform: translateX(calc(var(--rooms-slide-x, 0) * 1px))
+    rotateY(calc(var(--rooms-flip-deg, 0) * 1deg));
+}
+
+.rooms-card-image.is-fading,
+.rooms-card-image.is-slide-out,
+.rooms-card-image.is-flip-out {
+  opacity: 0;
+}
+
+.rooms-card-image.is-slide-instant,
+.rooms-card-image.is-flip-instant {
+  transition: none;
 }
 
 .rooms-card-image img {
@@ -528,6 +613,11 @@
   display: flex;
   flex-direction: column;
   gap: clamp(15px, 1.56vw, 30px);
+  transition: opacity 0.3s ease;
+}
+
+.rooms-item-desc.is-fading {
+  opacity: 0;
 }
 
 .rooms-item-info {
@@ -540,9 +630,9 @@
 .rooms-item-square {
   background-color: rgba(34, 34, 34, 0.35);
   color: white;
-  font-size: clamp(7px, 0.73vw, 14px);
+  font-size: clamp(11px, 0.73vw, 14px);
   font-weight: 600;
-  padding: clamp(2px, 0.21vw, 4px) clamp(9px, 0.94vw, 18px);
+  padding: clamp(4px, 0.21vw, 4px) clamp(12px, 0.94vw, 18px);
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -551,7 +641,7 @@
 }
 
 .rooms-item-square .number {
-  font-size: clamp(11px, 1.15vw, 22px);
+  font-size: clamp(13px, 1.15vw, 22px);
   font-weight: 700;
   text-transform: none;
 }
@@ -574,16 +664,16 @@
 
 .rooms-item-details {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: auto auto 270px;
   align-items: start;
-  gap: clamp(30px, 4.95vw, 95px);
+  gap: 15px;
 }
 
 .rooms-item-facility {
   display: flex;
   flex-direction: column;
   gap: clamp(6px, 0.63vw, 12px);
-  font-size: clamp(8px, 0.83vw, 16px);
+  font-size: clamp(12px, 0.83vw, 16px);
   line-height: 135%;
   font-weight: 500;
   color: var(--color-dark);
@@ -596,18 +686,553 @@
 }
 
 .rooms-item-facility li img {
-  width: clamp(12px, 1.25vw, 24px);
-  height: clamp(12px, 1.25vw, 24px);
+  width: clamp(16px, 1.25vw, 24px);
+  height: clamp(16px, 1.25vw, 24px);
   object-fit: contain;
 }
 
 .rooms-item-book-btn {
-  font-size: clamp(7px, 0.68vw, 13px);
+  width: 270px;
+  font-size: clamp(11px, 0.68vw, 13px);
   font-weight: 700;
   color: white;
   background-color: var(--color-dark);
-  padding: clamp(12px, 1.25vw, 24px) clamp(38px, 3.91vw, 75px);
+  padding-block: clamp(14px, 1.25vw, 24px);
   border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.plan {
+  position: relative;
+  /* отдельный контекст наложения, чтобы z-index слоёв секции
+     не конфликтовал с остальной страницей */
+  isolation: isolate;
+}
+
+/* Слой заголовка: закреплён и рисуется ПОВЕРХ блока с формой.
+   height: 0 — чтобы слой не занимал место в потоке и не сдвигал арку.
+   transform управляет скрипт: пока секция активна — заголовок закреплён,
+   затем «отлипает» (top: 90px от блока формы) и уезжает вместе с ним. */
+.plan-title-wrapper {
+  position: sticky;
+  top: 120px;
+  z-index: 100;
+  height: 0;
+  will-change: transform;
+}
+
+/* Слой арки города: рисуется НИЖЕ блока с формой, чтобы интерьер
+   наезжал поверх панорамы. */
+.plan-decoration-wrapper {
+  position: sticky;
+  top: 120px;
+  z-index: 0;
+}
+
+.plan-title-container {
+  position: absolute;
+  top: 90px;
+  width: 100%;
+}
+
+/* Базовый (тёмный) заголовок — читается над светлой панорамой. */
+.plan-title {
+  position: relative;
+  color: var(--color-dark);
+  font-size: clamp(32px, 3.33vw, 64px);
+  line-height: 120%;
+  text-align: center;
+}
+
+/* Светлая копия, наложенная пиксель-в-пиксель поверх базовой. Скрипт
+   обрезает её сверху по линии стыка с тёмным интерьером (clip-path):
+   над тёмным фоном виден белый текст, на стыке буквы режутся попиксельно. */
+.plan-title--over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  /* до инициализации скрипта копия полностью скрыта */
+  clip-path: inset(100% 0 0 0);
+  pointer-events: none;
+}
+
+.plan-decoration {
+  /* закрепление обеспечивает .plan-decoration-wrapper (sticky),
+     здесь нужен только порядок наложения ниже блока с формой */
+  position: relative;
+  z-index: 0;
+  padding-bottom: 100px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plan-decoration-image {
+  width: 590px;
+  height: 610px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+}
+
+.plan-form-container {
+  position: relative;
+  z-index: 1;
+  background: url(/assets/images/bg_OC_1.webp) center/cover no-repeat;
+  padding-top: 300px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.plan-form-container::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, transparent 36%);
+}
+
+.plan-form-container::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.plan-form-wrapper {
+  padding-bottom: 80px;
+  width: 600px;
+  height: 600px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(7px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.plan-form-title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 135%;
+  max-width: 360px;
+  text-align: center;
+  color: white;
+}
+
+.plan-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 360px;
+}
+
+.plan-form-input-wrapper {
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 50px;
+  padding: 0 24px 18px;
+  margin: 0;
+}
+
+.plan-form-label {
+  padding: 0 8px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 135%;
+  color: white;
+  text-transform: uppercase;
+}
+
+.plan-form-input {
+  width: 100%;
+  height: 28px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  outline: none;
+}
+
+.plan-form-btn {
+  height: 88px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 50px;
+}
+
+.city {
+  background-color: white;
+  padding-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.city-title {
+  color: var(--color-dark);
+  font-size: clamp(32px, 3.33vw, 64px);
+  line-height: 120%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 110px;
+}
+
+.city-title::after {
+  content: "ТАГАНРОГ";
+  z-index: -1;
+  font-size: clamp(80px, 16.6vw, 320px);
+  color: #ebe7dc;
+}
+
+.city-container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 3.125vw, 60px);
+}
+
+.city-content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10.24px, 1vw, 20px);
+}
+
+.city-image {
+  width: 100%;
+  aspect-ratio: 0.64;
+  object-fit: cover;
+}
+
+.city-image.rounded {
+  aspect-ratio: 0.8;
+}
+
+.city-image.rounded.top {
+  border-top-right-radius: 100%;
+  border-top-left-radius: 100%;
+}
+
+.city-image.top {
+  align-self: flex-end;
+}
+
+.city-image.rounded.bottom {
+  border-bottom-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  object-position: 30% center;
+}
+
+.city-image.bottom {
+  align-self: start;
+}
+
+.city-text {
+  padding-block: clamp(32px, 3.125vw, 60px);
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  align-self: center;
+}
+
+.city-text.end {
+  justify-self: end;
+}
+
+.city-description {
+  font-size: 16px;
+  line-height: 135%;
+  font-weight: 500;
+}
+
+.city-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.city-text-main {
+  font-size: 28px;
+  line-height: 120%;
+  font-weight: 500;
+}
+
+.hotel {
+  padding-top: clamp(96px, 9.375vw, 180px);
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  position: relative;
+}
+
+.hotel::after {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background-color: var(--color-beige);
+  position: absolute;
+  top: 31%;
+  left: 0;
+}
+
+.hotel-content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10.24px, 1vw, 20px);
+  position: relative;
+  z-index: 10;
+}
+
+.hotel-title {
+  font-size: clamp(22px, 2.2vw, 42px);
+  line-height: 120%;
+  max-width: 80%;
+}
+
+.hotel-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hotel-image-logo {
+  width: 65%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transform: translate(-25%, 3%);
+}
+
+.hotel-image-coffee {
+  width: 75%;
+  aspect-ratio: 0.6;
+  border-radius: 250px;
+  object-fit: cover;
+}
+
+.hotel-description {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hotel-description p {
+  font-size: clamp(18px, 1.45vw, 28px);
+  line-height: 135%;
+  font-weight: 500;
+  max-width: 67%;
+}
+
+.hotel-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(24px, 2vw, 40px);
+  position: relative;
+  z-index: 10;
+}
+
+.hotel-slider-track {
+  overflow: hidden;
+  width: 100%;
+}
+
+.hotel-slider-list {
+  max-width: 100%;
+  display: flex;
+  overflow-x: hidden;
+}
+
+.hotel-slider-item {
+  width: clamp(290px, 22.4vw, 430px);
+  height: clamp(400px, 30.7vw, 590px);
+  margin-right: 20px;
+  overflow: hidden;
+}
+
+.hotel-slider-item figure {
+  width: 100%;
+  height: 100%;
+}
+
+.hotel-slider-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hotel-slider-controls {
+  display: flex;
+  gap: clamp(3px, 0.26vw, 5px);
+}
+
+.hotel-slider-btn {
+  width: clamp(32px, 2.4vw, 46px);
+  height: clamp(32px, 2.4vw, 46px);
+  border: 1px solid black;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.hotel-slider-btn.prev svg {
+  transform: rotate(180deg);
+}
+
+.hotel-slider-btn:disabled {
+  color: #b4b2ab;
+  border: 1px solid #b4b2ab;
+}
+
+.hotel-form-container {
+  position: relative;
+  z-index: 1;
+  background: url(/assets/images/img5_3.webp) center/cover no-repeat;
+  padding-top: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 90px;
+}
+
+.hotel-form-container::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, transparent 36%);
+}
+
+.hotel-form-container::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hotel-form-container-title {
+  color: white;
+  font-size: clamp(32px, 3.33vw, 64px);
+  line-height: 120%;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.hotel-form-wrapper {
+  padding-bottom: 80px;
+  width: 600px;
+  height: 600px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(7px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.hotel-form-title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 135%;
+  max-width: 360px;
+  text-align: center;
+  color: white;
+}
+
+.hotel-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 360px;
+}
+
+.hotel-form-input-wrapper {
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 50px;
+  padding: 0 24px 18px;
+  margin: 0;
+}
+
+.hotel-form-label {
+  padding: 0 8px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 135%;
+  color: white;
+  text-transform: uppercase;
+}
+
+.hotel-form-input {
+  width: 100%;
+  height: 28px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  outline: none;
+}
+
+.hotel-form-btn {
+  height: 88px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 1280px) {
+  .container,
+  .header {
+    padding-inline: 2vw;
+  }
 }
 
 @media screen and (max-width: 1023px) {

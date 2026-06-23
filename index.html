@@ -95,7 +95,7 @@
     <main>
       <section class="hero">
         <div class="hero-bg">
-          <img src="assets/images/bg_1.jpg" alt="Интерьер гостиницы Чехов" />
+          <img src="assets/images/bg_1.webp" alt="Интерьер гостиницы Чехов" />
         </div>
 
         <div class="hero-content container">
@@ -185,8 +185,8 @@
       </section>
       <section class="rooms" id="rooms">
         <div class="rooms-header container">
-          <h2 class="rooms-title accent">Все категории<br />номеров:</h2>
-          <p class="rooms-subtitle accent">
+          <h2 class="rooms-title heading">Все категории<br />номеров:</h2>
+          <p class="rooms-subtitle heading">
             От уютного стандарта<br />до просторных семейных люксов
           </p>
         </div>
@@ -199,13 +199,17 @@
             <button class="rooms-tab" type="button">Люкс</button>
             <button class="rooms-tab" type="button">Семейный люкс</button>
           </div>
-          <ul class="rooms-slider">
+          <ul class="rooms-slider" id="rooms-slider">
             <li class="rooms-item">
               <div class="rooms-card main">
                 <figure class="rooms-card-image">
-                  <img src="/assets/images/room-1.png" alt="Стандарт 1" />
-                  <figcaption class="rooms-card-name accent">
-                    Стандарт
+                  <img
+                    id="rooms-slide-main-img"
+                    src="/assets/images/room-1.png"
+                    alt="Стандарт 1"
+                  />
+                  <figcaption class="rooms-card-name heading">
+                    <span id="rooms-slide-main-name">Стандарт</span>
                     <button class="rooms-card-btn" title="Подробнее">
                       <img src="/assets/icons/arrow.svg" alt="" />
                     </button>
@@ -214,9 +218,13 @@
               </div>
               <div class="rooms-card second">
                 <figure class="rooms-card-image">
-                  <img src="/assets/images/room-2.png" alt="Стандарт 1" />
-                  <figcaption class="rooms-card-name accent second">
-                    Стандарт
+                  <img
+                    id="rooms-slide-next-img"
+                    src="/assets/images/room-2.png"
+                    alt="Стандарт 1"
+                  />
+                  <figcaption class="rooms-card-name heading second">
+                    <span id="rooms-slide-next-name">Стандарт</span>
                   </figcaption>
                 </figure>
                 <nav class="rooms-slider-controls">
@@ -273,41 +281,25 @@
                   <div class="rooms-item-square">
                     <img src="/assets/icons/expand.svg" alt="" />
                     Площадь
-                    <span class="number">59 м<sup>2</sup></span>
+                    <span class="number" id="rooms-slide-area"
+                      >59 м<sup>2</sup></span
+                    >
                   </div>
                   <p class="rooms-item-price">
-                    от <span class="number">20 117</span> ₽/сутки
+                    от
+                    <span class="number" id="rooms-slide-price">20 117</span>
+                    ₽/сутки
                   </p>
                 </div>
                 <div class="rooms-item-details">
-                  <ul class="rooms-item-facility">
-                    <li>
-                      <img src="/assets/icons/bed.svg" alt="" />
-                      1 большая кровать
-                    </li>
-                    <li>
-                      <img src="/assets/icons/balcony.svg" alt="" />
-                      Балкон
-                    </li>
-                    <li>
-                      <img src="/assets/icons/shower.svg" alt="" />
-                      Душ
-                    </li>
-                  </ul>
-                  <ul class="rooms-item-facility">
-                    <li>
-                      <img src="/assets/icons/wifi.svg" alt="" />
-                      Бесплатный Wi-Fi
-                    </li>
-                    <li>
-                      <img src="/assets/icons/safe.svg" alt="" />
-                      Сейф
-                    </li>
-                    <li>
-                      <img src="/assets/icons/wine.svg" alt="" />
-                      Бар
-                    </li>
-                  </ul>
+                  <ul
+                    class="rooms-item-facility"
+                    id="rooms-slide-facility-1"
+                  ></ul>
+                  <ul
+                    class="rooms-item-facility"
+                    id="rooms-slide-facility-2"
+                  ></ul>
                   <button class="rooms-item-book-btn">Забронировать</button>
                 </div>
               </div>
@@ -315,7 +307,299 @@
           </ul>
         </div>
       </section>
+      <section class="plan">
+        <div class="plan-title-wrapper">
+          <div class="plan-title-container">
+            <h2 class="plan-title heading">
+              Планируете поездку <br />
+              в Таганрог в ближайшее время
+            </h2>
+            <h2 class="plan-title plan-title--over heading" aria-hidden="true">
+              Планируете поездку <br />
+              в Таганрог в ближайшее время
+            </h2>
+          </div>
+        </div>
+        <div class="plan-decoration-wrapper">
+          <div class="plan-decoration">
+            <img
+              class="plan-decoration-image"
+              src="/assets/images/img3.webp"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="plan-form-container">
+          <div class="plan-form-wrapper">
+            <h3 class="plan-form-title">
+              Зафиксируйте стоимость и получите приоритет
+              <span style="text-wrap: nowrap">при заселении</span>
+            </h3>
+            <form action="POST" class="plan-form">
+              <fieldset class="plan-form-input-wrapper">
+                <legend class="plan-form-label">Ваш телефон</legend>
+                <input
+                  class="plan-form-input"
+                  type="text"
+                  name="phone"
+                  id="phone-1"
+                  placeholder="+7(___)___-__-__"
+                />
+              </fieldset>
+              <button type="submit" class="plan-form-btn">Забронировать</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="city">
+        <h2 class="city-title heading">
+          Таганрог: город, <br />в который возвращаются
+        </h2>
+        <div class="city-container container">
+          <div class="city-content">
+            <img
+              class="city-image bottom"
+              src="/assets/images/img4_1.webp"
+              alt="Памятник Чехову"
+            />
+            <img
+              class="city-image rounded bottom"
+              src="/assets/images/img4_2.webp"
+              alt="Дворец Алфераки"
+            />
+            <div class="city-text end">
+              <p class="city-description">
+                Таганрог — это то самое место,
+                <span class="underline"
+                  >где чувствуешь себя желанным гостем, здесь душевно и
+                  уютно.</span
+                >
+                Южное тепло переплетается с богатой историей, а во дворах
+                старинных улиц царит особенная атмосфера.
+              </p>
+              <div class="city-text-wrapper">
+                <p class="city-text-main">
+                  Именно в этом городе родился и провел юность Антон Павлович
+                  Чехов.
+                </p>
+                <p class="city-description">
+                  Здесь он написал свои первые произведения. На улице Фрунзе
+                  стоит памятник другой знаменитой уроженке Таганрога — Фаине
+                  Раневской. Рядом стоит бронзовая скамейка, которая давно стала
+                  местом, куда приходят за улыбкой и фотографией на память,
+                  а дом, где она провела детство, притягивает путешественников
+                  со всей страны.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="city-content">
+            <div class="city-text">
+              <p class="city-description">
+                Дворец Алфераки с его парадными залами, купеческие особняки,
+                уютные театры, живописная Пушкинская набережная, знаменитая
+                Каменная лестница и десятки памятников архитектуры. Все это
+                можно неспешно обойти пешком за день. А к вечеру заглянуть
+                в один из ресторанов с авторской кухней и почувствовать, как
+                гастрономическая культура города раскрывается с каждым блюдом.
+              </p>
+              <div class="city-text-wrapper">
+                <p class="city-text-main">
+                  Гостиница «Чехов» расположена в самом сердце этих
+                  особенностей.
+                </p>
+                <p class="city-description">
+                  Мы готовы раскрыть для вас город с лучшей стороны: составим
+                  персональный маршрут по достопримечательностям, предоставим
+                  привилегии в ресторанах-партнерах и подберем гастрономические
+                  сувениры в дорогу.
+                </p>
+              </div>
+            </div>
+            <img
+              class="city-image rounded top"
+              src="/assets/images/img4_3.webp"
+              alt=""
+            />
+            <img
+              class="city-image top"
+              src="/assets/images/img4_4.webp"
+              alt=""
+            />
+          </div>
+        </div>
+      </section>
+      <section class="hotel">
+        <div class="hotel-content container">
+          <h2 class="hotel-title heading">
+            Каждый уголок гостиницы «Чехов»
+            <span class="accent"> создает настроение </span>
+          </h2>
+          <div class="hotel-image-container">
+            <img
+              class="hotel-image-logo"
+              src="/assets/icons/welcome.svg"
+              alt=""
+            />
+            <img
+              class="hotel-image-coffee"
+              src="/assets/images/img5.webp"
+              alt=""
+            />
+          </div>
+          <div class="hotel-description">
+            <p>
+              Вы почувствуете атмосферу уюта и заботы с первых секунд: аромат
+              свежесваренного кофе, мягкий свет и текстуры, которых приятно
+              касаться. Мы предусмотрели все для вашего безупречного отдыха
+              и удовольствия.
+            </p>
+          </div>
+        </div>
+        <div class="hotel-slider container">
+          <div class="hotel-slider-track">
+            <ul class="hotel-slider-list">
+              <li class="hotel-slider-item">
+                <figure>
+                  <img
+                    src="/assets/images/img5_2.webp"
+                    alt="бутик-отель Чехов"
+                  />
+                </figure>
+              </li>
+              <li class="hotel-slider-item">
+                <figure>
+                  <img
+                    src="/assets/images/img5_3.webp"
+                    alt="бутик-отель Чехов"
+                  />
+                </figure>
+              </li>
+              <li class="hotel-slider-item">
+                <figure>
+                  <img
+                    src="/assets/images/img5_4.webp"
+                    alt="бутик-отель Чехов"
+                  />
+                </figure>
+              </li>
+              <li class="hotel-slider-item">
+                <figure>
+                  <img
+                    src="/assets/images/img10_3.webp"
+                    alt="бутик-отель Чехов"
+                  />
+                </figure>
+              </li>
+              <li class="hotel-slider-item">
+                <figure>
+                  <img
+                    src="/assets/images/img5_2.webp"
+                    alt="бутик-отель Чехов"
+                  />
+                </figure>
+              </li>
+              <li class="hotel-slider-item">
+                <figure>
+                  <img
+                    src="/assets/images/img5_3.webp"
+                    alt="бутик-отель Чехов"
+                  />
+                </figure>
+              </li>
+              <li class="hotel-slider-item">
+                <figure>
+                  <img
+                    src="/assets/images/img5_4.webp"
+                    alt="бутик-отель Чехов"
+                  />
+                </figure>
+              </li>
+              <li class="hotel-slider-item">
+                <figure>
+                  <img
+                    src="/assets/images/img10_3.webp"
+                    alt="бутик-отель Чехов"
+                  />
+                </figure>
+              </li>
+            </ul>
+          </div>
+          <nav class="hotel-slider-controls">
+            <button disabled class="hotel-slider-btn prev">
+              <svg
+                width="10"
+                height="9"
+                viewBox="0 0 10 9"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_62_138)">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M10.0004 4.49015C9.99784 4.32454 9.92228 4.1692 9.79515 4.06835L6.10821 0.164873C6.01081 0.061841 5.8778 0.00298702 5.73834 0.00126036C5.59899 -0.000478625 5.46454 0.0550333 5.3648 0.155599C5.26502 0.256164 5.20801 0.393508 5.20633 0.53751C5.20466 0.681501 5.25843 0.8202 5.35581 0.923221L8.22066 3.95602H0.548606C0.40801 3.95393 0.272344 4.01025 0.172228 4.11216C0.072014 4.2142 0.0156369 4.35337 0.015625 4.49861C0.015625 4.64386 0.072014 4.78312 0.17224 4.88506C0.272344 4.98706 0.40801 5.04331 0.548594 5.04131H8.22068L5.35581 8.0741C5.25841 8.17713 5.20466 8.31584 5.20633 8.45983C5.20801 8.60379 5.26493 8.74116 5.36478 8.84173C5.46454 8.94229 5.5989 8.99787 5.73834 8.99608C5.87779 8.99433 6.01081 8.93547 6.10821 8.83237L9.79716 4.92703C9.92755 4.82247 10.0029 4.66076 10.0004 4.49034V4.49015Z"
+                    fill="currentColor"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_62_138">
+                    <rect width="10" height="9" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+            <button class="hotel-slider-btn next">
+              <svg
+                width="10"
+                height="9"
+                viewBox="0 0 10 9"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_62_138)">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M10.0004 4.49015C9.99784 4.32454 9.92228 4.1692 9.79515 4.06835L6.10821 0.164873C6.01081 0.061841 5.8778 0.00298702 5.73834 0.00126036C5.59899 -0.000478625 5.46454 0.0550333 5.3648 0.155599C5.26502 0.256164 5.20801 0.393508 5.20633 0.53751C5.20466 0.681501 5.25843 0.8202 5.35581 0.923221L8.22066 3.95602H0.548606C0.40801 3.95393 0.272344 4.01025 0.172228 4.11216C0.072014 4.2142 0.0156369 4.35337 0.015625 4.49861C0.015625 4.64386 0.072014 4.78312 0.17224 4.88506C0.272344 4.98706 0.40801 5.04331 0.548594 5.04131H8.22068L5.35581 8.0741C5.25841 8.17713 5.20466 8.31584 5.20633 8.45983C5.20801 8.60379 5.26493 8.74116 5.36478 8.84173C5.46454 8.94229 5.5989 8.99787 5.73834 8.99608C5.87779 8.99433 6.01081 8.93547 6.10821 8.83237L9.79716 4.92703C9.92755 4.82247 10.0029 4.66076 10.0004 4.49034V4.49015Z"
+                    fill="currentColor"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_62_138">
+                    <rect width="10" height="9" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+          </nav>
+        </div>
+        <div class="hotel-form-container container">
+          <h2 class="hotel-form-container-title heading">
+            Убедитесь лично <br />в уровне комфорта «Чехова»
+          </h2>
+          <div class="hotel-form-wrapper">
+            <h3 class="hotel-form-title">
+              Свяжитесь с администратором для консультации по номерам и датам
+            </h3>
+            <form action="POST" class="hotel-form">
+              <fieldset class="hotel-form-input-wrapper">
+                <legend class="hotel-form-label">Ваш телефон</legend>
+                <input
+                  class="hotel-form-input"
+                  type="text"
+                  name="phone"
+                  id="phone-2"
+                  placeholder="+7(___)___-__-__"
+                />
+              </fieldset>
+              <button type="submit" class="hotel-form-btn">Связаться</button>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/imask@7/dist/imask.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
