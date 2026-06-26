@@ -97,6 +97,7 @@
   --font-heading: "TenorSans";
   --color-beige: #f6f2e8;
   --color-skin: #fff0d7;
+  --color-gold: #e2c28e;
   --color-dark: #353536;
   --color-melange: #b3b1a9;
   font-family: var(--font-primary);
@@ -1439,6 +1440,8 @@
 }
 
 .factory {
+  position: relative;
+  z-index: 10;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: center;
@@ -1484,4 +1487,210 @@
   line-height: 135%;
   font-weight: 500;
   max-width: 55%;
+}
+
+.privileges {
+  position: relative;
+  padding-top: 150px;
+  background: linear-gradient(
+    to bottom,
+    white 0%,
+    white 30%,
+    var(--color-beige) 30%
+  );
+}
+
+.privileges::after {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background-color: var(--color-beige);
+  position: absolute;
+  top: -13%;
+  left: 0;
+  z-index: 1;
+}
+
+.privileges-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  position: relative;
+  z-index: 10;
+}
+
+.privileges-title {
+  color: var(--color-dark);
+  font-size: clamp(32px, 3.33vw, 64px);
+  line-height: 120%;
+  text-align: center;
+}
+
+.privileges-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.privileges-item {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  aspect-ratio: 1.67;
+}
+
+.privileges-item.buffet {
+  background: url(/assets/images/img8_1.webp) center/cover no-repeat;
+}
+
+.privileges-item.delivery {
+  background: url(/assets/images/img8_2.webp) center/cover no-repeat;
+}
+
+.privileges-item-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 10%;
+  height: 80%;
+  width: 65%;
+  border-top-left-radius: 1000px;
+  border-top-right-radius: 1000px;
+  background-color: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(25px);
+  color: white;
+  text-align: center;
+}
+
+.privileges-item-icon {
+  width: min(3.125vw, 60px);
+  height: min(3.125vw, 60px);
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.privileges-item-icon img {
+  width: 70%;
+  height: auto;
+}
+
+.privileges-item-name {
+  font-size: clamp(18px, 1.45vw, 28px);
+  line-height: 120%;
+  font-weight: 500;
+  max-width: 60%;
+}
+
+.privileges-item-desc {
+  font-size: clamp(12px, 0.83vw, 16px);
+  line-height: 135%;
+  font-weight: 500;
+  max-width: 70%;
+}
+
+.privileges-slider {
+  background-color: var(--color-beige);
+}
+
+.privileges-rest-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.privileges-rest-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.privileges-rest-item-content {
+  width: 100%;
+  height: 70%;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.privileges-rest-item-content.transparent {
+  border: 1px solid var(--color-melange);
+}
+
+.privileges-rest-item-content.white {
+  background-color: white;
+}
+
+.privileges-rest-item-content.black {
+  background-color: black;
+}
+
+.privileges-rest-item-content img {
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  max-width: 70%;
+  max-height: 80%;
+}
+
+.privileges-rest-item-content.tkz img {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.privileges-rest-item-link {
+  text-decoration: underline;
+}
+
+.privileges-guests {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.privileges-guests-title {
+  color: var(--color-dark);
+  font-size: clamp(32px, 3.33vw, 64px);
+  line-height: 120%;
+  text-align: center;
+}
+
+.privileges-guests-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.privileges-guests-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.privileges-guests-item-img {
+  width: 100%;
+  aspect-ratio: 1.5;
+}
+
+.privileges-guests-item-name {
+  padding-block: 80px;
+  padding-left: 60px;
+  background-color: var(--color-dark);
+  color: white;
+  font-size: clamp(18px, 1.67vw, 32px);
+}
+
+.privileges-guests-item .gold {
+  color: var(--color-gold);
 }
