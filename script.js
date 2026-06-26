@@ -28,6 +28,8 @@ document.getElementById("checkout").addEventListener("change", function () {
 
 const phoneInput1 = document.getElementById("phone-1");
 const phoneInput2 = document.getElementById("phone-2");
+const phoneInput3 = document.getElementById("phone-3");
+const phoneInput4 = document.getElementById("phone-4");
 
 if (phoneInput1) {
   IMask(phoneInput1, {
@@ -38,6 +40,20 @@ if (phoneInput1) {
 
 if (phoneInput2) {
   IMask(phoneInput2, {
+    mask: "+{7}(000)000-00-00",
+    lazy: false,
+  });
+}
+
+if (phoneInput3) {
+  IMask(phoneInput3, {
+    mask: "+{7}(000)000-00-00",
+    lazy: false,
+  });
+}
+
+if (phoneInput4) {
+  IMask(phoneInput4, {
     mask: "+{7}(000)000-00-00",
     lazy: false,
   });
@@ -397,3 +413,21 @@ updateRoomsNavState();
   window.addEventListener("resize", updateNavState);
   updateNavState();
 })();
+
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach(function (item) {
+  const question = item.querySelector(".faq-item-question");
+
+  question.addEventListener("click", function () {
+    const isOpen = item.classList.contains("is-open");
+
+    faqItems.forEach(function (otherItem) {
+      otherItem.classList.remove("is-open");
+    });
+
+    if (!isOpen) {
+      item.classList.add("is-open");
+    }
+  });
+});
