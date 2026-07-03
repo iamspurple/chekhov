@@ -420,6 +420,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  max-height: 56vw;
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
@@ -594,7 +595,7 @@
   content: "";
   display: block;
   width: 100%;
-  aspect-ratio: 1;
+  height: 50%;
   border-top-left-radius: 1500px;
   border-top-right-radius: 1500px;
   background-color: white;
@@ -901,15 +902,9 @@
 
 .plan {
   position: relative;
-  /* отдельный контекст наложения, чтобы z-index слоёв секции
-     не конфликтовал с остальной страницей */
   isolation: isolate;
 }
 
-/* Слой заголовка: закреплён и рисуется ПОВЕРХ блока с формой.
-   height: 0 — чтобы слой не занимал место в потоке и не сдвигал арку.
-   transform управляет скрипт: пока секция активна — заголовок закреплён,
-   затем «отлипает» (top: 90px от блока формы) и уезжает вместе с ним. */
 .plan-title-wrapper {
   position: sticky;
   top: 120px;
@@ -918,8 +913,6 @@
   will-change: transform;
 }
 
-/* Слой арки города: рисуется НИЖЕ блока с формой, чтобы интерьер
-   наезжал поверх панорамы. */
 .plan-decoration-wrapper {
   position: sticky;
   top: 120px;
@@ -932,7 +925,6 @@
   width: 100%;
 }
 
-/* Базовый (тёмный) заголовок — читается над светлой панорамой. */
 .plan-title {
   position: relative;
   color: var(--color-dark);
@@ -941,23 +933,17 @@
   text-align: center;
 }
 
-/* Светлая копия, наложенная пиксель-в-пиксель поверх базовой. Скрипт
-   обрезает её сверху по линии стыка с тёмным интерьером (clip-path):
-   над тёмным фоном виден белый текст, на стыке буквы режутся попиксельно. */
 .plan-title--over {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   color: #fff;
-  /* до инициализации скрипта копия полностью скрыта */
   clip-path: inset(100% 0 0 0);
   pointer-events: none;
 }
 
 .plan-decoration {
-  /* закрепление обеспечивает .plan-decoration-wrapper (sticky),
-     здесь нужен только порядок наложения ниже блока с формой */
   position: relative;
   z-index: 0;
   padding-bottom: 100px;
@@ -1240,7 +1226,7 @@
   content: "";
   display: block;
   width: 100%;
-  aspect-ratio: 1;
+  height: 82%;
   border-top-left-radius: 1500px;
   border-top-right-radius: 1500px;
   background-color: var(--color-beige);
@@ -1976,6 +1962,7 @@
 }
 
 .privileges-guests-item-name {
+  flex-grow: 1;
   padding-block: clamp(40px, 4.17vw, 80px);
   padding-left: clamp(20px, 3.125vw, 60px);
   background-color: var(--color-dark);
@@ -2379,7 +2366,7 @@
 }
 
 .reviews-photo-item {
-  width: 22.4vw;
+  width: max(22.4vw, 290px);
   height: auto;
   flex-shrink: 0;
   margin-right: 1vw;
@@ -2644,7 +2631,8 @@
 
 .faq-btn {
   padding-block: 38px;
-  width: 360px;
+  width: 100%;
+  max-width: 360px;
   border-radius: 100px;
   background-color: white;
   border: 1px solid var(--color-dark);
@@ -2659,7 +2647,6 @@
   gap: 16px;
 }
 
-/* ссылка «Ещё вопросы» — только в мобильной раскладке */
 .faq-more {
   display: none;
 }
@@ -2683,6 +2670,10 @@
   border-radius: 100px;
   background-color: transparent;
   padding: 15px 15px 15px 50px;
+}
+
+.faq-item-question span {
+  max-width: 80%;
 }
 
 .faq-item-icon {
@@ -2964,7 +2955,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-  /* ---------- Header ---------- */
   .header-burger {
     display: flex;
   }
@@ -2986,17 +2976,216 @@
     left: 50%;
     transform: translateX(-37%);
   }
+
+  .hero {
+    max-height: 600px;
+  }
 }
 
-@media (max-width: 580px) {
-  body {
-    overflow-x: clip;
+@media screen and (max-width: 768px) {
+  .city-image.bottom:not(.rounded) {
+    align-self: flex-end;
   }
 
-  .container {
+  .city-content {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12px;
+    row-gap: 20px;
+    align-items: start;
+  }
+
+  .city-text,
+  .city-text.end,
+  .city-text-wrapper {
+    display: contents;
+  }
+
+  .city-description,
+  .city-text-main {
+    grid-column: 1 / -1;
+  }
+
+  .city-image,
+  .city-content:last-child .city-image {
+    grid-column: auto;
+    height: auto;
+    align-self: start;
+  }
+
+  .city-image.top,
+  .city-image.bottom {
+    align-self: start;
+  }
+
+  .city-image {
+    aspect-ratio: 0.63;
+  }
+
+  .city-image.rounded {
+    aspect-ratio: 0.8;
+  }
+
+  .city-image.rounded.top {
+    align-self: flex-end;
+  }
+
+  .city-text-main {
+    font-size: 24px;
+  }
+
+  .city-content:first-child .city-text.end > .city-description {
+    order: -1;
+  }
+
+  .city-content:last-child .city-image {
+    order: -1;
+  }
+
+  .hotel-title {
+    font-size: 32px;
+    align-self: center;
+  }
+
+  .hotel-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hotel-description {
+    grid-column: -1 /1;
+    text-align: center;
+  }
+
+  .hotel-description p {
+    max-width: 100%;
+  }
+
+  .hotel-image-container {
+    max-width: 320px;
+  }
+
+  .privileges-item {
+    aspect-ratio: 1;
+  }
+
+  .privileges-item-content {
+    width: 90%;
+    height: 90%;
+  }
+
+  .privileges-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-inline: 0;
+  }
+
+  .privileges-rest-list {
+    display: flex;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .privileges-rest-item {
+    width: 190px;
+    margin-right: 7px;
+  }
+
+  .privileges-rest-item:last-child {
+    margin-right: 0;
+  }
+
+  .privileges-rest-item-content {
+    height: 103px;
+  }
+
+  .privileges-rest-item-link {
+    font-size: 15px;
+  }
+
+  .privileges-slider-controls {
+    display: flex;
+    align-self: center;
+  }
+
+  .privileges-slider-btn {
+    width: 46px;
+    height: 46px;
+  }
+
+  .privileges-slider-btn svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .privileges-guests-list {
+    grid-template-columns: 1fr;
+    padding-inline: 10%;
+  }
+
+  .privileges-guests-item-img {
+    aspect-ratio: 2/1;
+    object-fit: cover;
+  }
+
+  .privileges-guests-item-name {
+    font-size: 20px;
+    padding: 30px 15px;
+  }
+
+  .location-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-bottom: 60px;
+  }
+
+  .reasons-list {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .reasons-item {
+    gap: 14px;
     padding-inline: 15px;
   }
 
+  .reasons-item.image {
+    padding: 0;
+    width: 100%;
+  }
+
+  .reasons-item.image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.5;
+  }
+
+  .reasons-item-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .reasons-item-name {
+    font-size: 18px;
+  }
+
+  .reasons-item-desc {
+    font-size: 15px;
+    max-width: 450px;
+  }
+
+  .faq {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 680px) {
   .header {
     padding: 0;
   }
@@ -3275,28 +3464,6 @@
     background: #ffffff;
   }
 
-  .rooms {
-    padding-top: 60px;
-  }
-
-  .rooms::after {
-    top: 80%;
-  }
-
-  .rooms-title {
-    font-size: 28px;
-    margin-bottom: 0;
-  }
-
-  .rooms-title::after {
-    font-size: 62px;
-    transform: translateY(-50%);
-  }
-
-  .rooms-subtitle {
-    font-size: 24px;
-  }
-
   .rooms-tabs {
     padding: 8px;
     border-top-right-radius: 0;
@@ -3440,6 +3607,38 @@
     width: 10px;
     height: 10px;
   }
+}
+
+@media (max-width: 580px) {
+  body {
+    overflow-x: clip;
+  }
+
+  .container {
+    padding-inline: 15px;
+  }
+
+  .rooms {
+    padding-top: 60px;
+  }
+
+  .rooms::after {
+    top: 80%;
+  }
+
+  .rooms-title {
+    font-size: 28px;
+    margin-bottom: 0;
+  }
+
+  .rooms-title::after {
+    font-size: 62px;
+    transform: translateY(-50%);
+  }
+
+  .rooms-subtitle {
+    font-size: 24px;
+  }
 
   .plan-title,
   .hotel-form-container-title,
@@ -3538,60 +3737,6 @@
   .city-container {
     padding-inline: 15px;
     gap: 40px;
-  }
-
-  .city-content {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 12px;
-    row-gap: 20px;
-    align-items: start;
-  }
-
-  .city-text,
-  .city-text.end,
-  .city-text-wrapper {
-    display: contents;
-  }
-
-  .city-description,
-  .city-text-main {
-    grid-column: 1 / -1;
-  }
-
-  .city-image,
-  .city-content:last-child .city-image {
-    grid-column: auto;
-    height: auto;
-    align-self: start;
-  }
-
-  .city-image.top,
-  .city-image.bottom {
-    align-self: start;
-  }
-
-  .city-image {
-    aspect-ratio: 0.63;
-  }
-
-  .city-image.rounded {
-    aspect-ratio: 0.8;
-  }
-
-  .city-image.rounded.top {
-    align-self: flex-end;
-  }
-
-  .city-text-main {
-    font-size: 24px;
-  }
-
-  .city-content:first-child .city-text.end > .city-description {
-    order: -1;
-  }
-
-  .city-content:last-child .city-image {
-    order: -1;
   }
 
   .hotel {
@@ -3718,7 +3863,7 @@
   }
 
   .chibo-slider-item {
-    width: 320px;
+    width: clamp(320px, 80vw, 400px);
     flex-shrink: 0;
     height: auto;
     margin-right: 15px;
@@ -3850,51 +3995,6 @@
     font-size: 16px;
   }
 
-  .privileges-slider {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding-inline: 0;
-  }
-
-  .privileges-rest-list {
-    display: flex;
-    gap: 0;
-    overflow: hidden;
-  }
-
-  .privileges-rest-item {
-    width: 190px;
-    margin-right: 7px;
-  }
-
-  .privileges-rest-item:last-child {
-    margin-right: 0;
-  }
-
-  .privileges-rest-item-content {
-    height: 103px;
-  }
-
-  .privileges-rest-item-link {
-    font-size: 15px;
-  }
-
-  .privileges-slider-controls {
-    display: flex;
-    align-self: center;
-  }
-
-  .privileges-slider-btn {
-    width: 46px;
-    height: 46px;
-  }
-
-  .privileges-slider-btn svg {
-    width: 10px;
-    height: 10px;
-  }
-
   .privileges-guests {
     gap: 20px;
   }
@@ -3904,13 +4004,11 @@
   }
 
   .privileges-guests-list {
-    grid-template-columns: 1fr;
-    gap: 3px;
+    padding: 0;
   }
 
-  .privileges-guests-item-name {
-    font-size: 20px;
-    padding: 30px 15px;
+  .privileges-guests-item-img {
+    aspect-ratio: 1.5;
   }
 
   .location {
@@ -3929,12 +4027,6 @@
 
   .location-subtitle {
     font-size: 16px;
-  }
-
-  .location-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding-bottom: 60px;
   }
 
   .location-list {
@@ -3975,40 +4067,6 @@
   .reasons-title::after {
     font-size: 41px;
     transform: translateY(-40%);
-  }
-
-  .reasons-list {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .reasons-item {
-    gap: 14px;
-    padding-inline: 15px;
-  }
-
-  .reasons-item.image {
-    padding: 0;
-    width: 100%;
-  }
-
-  .reasons-item.image img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1.5;
-  }
-
-  .reasons-item-icon {
-    width: 60px;
-    height: 60px;
-  }
-
-  .reasons-item-name {
-    font-size: 18px;
-  }
-
-  .reasons-item-desc {
-    font-size: 15px;
   }
 
   .reviews-wrapper {
