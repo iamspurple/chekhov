@@ -9,6 +9,16 @@
   <body>
     <header class="header">
       <div class="header-top">
+        <button
+          class="header-burger"
+          type="button"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          aria-controls="nav-drawer"
+        >
+          <img src="/assets/icons/burger.svg" alt="" />
+        </button>
+
         <nav class="header-nav">
           <ul class="header-nav-list">
             <li><a href="#rooms">Номера</a></li>
@@ -34,6 +44,14 @@
           </address>
           <a class="header-phone" href="tel:88001234560">8 800 123 456 00</a>
           <button class="header-book-btn">Забронировать</button>
+          <button
+            class="header-phone-btn"
+            type="button"
+            aria-label="Контакты"
+            aria-haspopup="dialog"
+          >
+            <img src="assets/icons/phone.svg" alt="" />
+          </button>
         </div>
       </div>
 
@@ -91,6 +109,94 @@
         </div>
       </div>
     </header>
+
+    <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+      <div class="nav-drawer-overlay" data-drawer-close></div>
+      <aside
+        class="nav-drawer-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Меню"
+      >
+        <button
+          class="nav-drawer-close"
+          type="button"
+          aria-label="Закрыть меню"
+          data-drawer-close
+        >
+          <img src="/assets/icons/close.svg" alt="" />
+        </button>
+
+        <div class="nav-drawer-logo">
+          <img src="assets/icons/logo.svg" alt="Чехов бутик-отель" />
+          <span class="nav-drawer-logo-text">бутик-отель</span>
+          <div class="stars">
+            <svg
+              width="14"
+              height="13"
+              viewBox="0 0 14 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+                fill="white"
+              />
+            </svg>
+            <svg
+              width="14"
+              height="13"
+              viewBox="0 0 14 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+                fill="white"
+              />
+            </svg>
+            <svg
+              width="14"
+              height="13"
+              viewBox="0 0 14 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+                fill="white"
+              />
+            </svg>
+            <svg
+              width="14"
+              height="13"
+              viewBox="0 0 14 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <nav class="nav-drawer-nav">
+          <ul class="nav-drawer-list">
+            <li><a href="#rooms" data-drawer-close>Номера</a></li>
+            <li><a href="#about" data-drawer-close>О гостинице</a></li>
+            <li><a href="#privileges" data-drawer-close>Привилегии</a></li>
+            <li><a href="#partners" data-drawer-close>Партнёры</a></li>
+            <li><a href="#contacts" data-drawer-close>Контакты</a></li>
+            <li><a href="#map" data-drawer-close>Карта</a></li>
+          </ul>
+        </nav>
+        <figure class="nav-drawer-image">
+          <img src="/assets/images/bg_OC_4.webp" alt="" />
+        </figure>
+      </aside>
+    </div>
 
     <main>
       <section class="hero">
@@ -181,6 +287,79 @@
             </button>
           </div>
           <button class="hero-booking-btn" type="button">Найти номер</button>
+        </div>
+
+        <div class="hero-advantages-mob-slider">
+          <ul class="hero-advantages-mob-list">
+            <li class="hero-advantages-mob-item">
+              <div class="hero-advantages-mob-item-image">
+                <img src="/assets/images/bg_OC_1.webp" alt="" />
+              </div>
+              <div class="hero-advantages-mob-item-content">
+                <h3 class="hero-advantages-mob-item-title heading">
+                  шведский стол
+                </h3>
+                <p class="hero-advantages-mob-item-desc">
+                  каждое утро c ежедневно обновляемым меню
+                </p>
+              </div>
+            </li>
+            <li class="hero-advantages-mob-item">
+              <div class="hero-advantages-mob-item-image">
+                <img src="/assets/images/bg_OC_1.webp" alt="" />
+              </div>
+              <div class="hero-advantages-mob-item-content">
+                <h3 class="hero-advantages-mob-item-title heading">Ресторан</h3>
+                <p class="hero-advantages-mob-item-desc">
+                  в здании гостиницы с доставкой блюд в номер
+                </p>
+              </div>
+            </li>
+            <li class="hero-advantages-mob-item">
+              <div class="hero-advantages-mob-item-image">
+                <img src="/assets/images/bg_OC_1.webp" alt="" />
+              </div>
+              <div class="hero-advantages-mob-item-content">
+                <h3 class="hero-advantages-mob-item-title heading">
+                  Собственная парковка
+                </h3>
+                <p class="hero-advantages-mob-item-desc">
+                  на территории гостиницы
+                </p>
+              </div>
+            </li>
+            <li class="hero-advantages-mob-item">
+              <div class="hero-advantages-mob-item-image">
+                <img src="/assets/images/bg_OC_1.webp" alt="" />
+              </div>
+              <div class="hero-advantages-mob-item-content">
+                <h3 class="hero-advantages-mob-item-title heading">
+                  Сервис личного помощника
+                </h3>
+              </div>
+            </li>
+            <li class="hero-advantages-mob-item">
+              <div class="hero-advantages-mob-item-image">
+                <img src="/assets/images/bg_OC_1.webp" alt="" />
+              </div>
+              <div class="hero-advantages-mob-item-content">
+                <h3 class="hero-advantages-mob-item-title heading">
+                  Карта гостя
+                </h3>
+                <p class="hero-advantages-mob-item-desc">
+                  со скидками в ресторанах, магазинах колбас и мясных
+                  деликатесов местного производителя
+                </p>
+              </div>
+            </li>
+          </ul>
+          <nav class="hero-advantages-mob-nav">
+            <button class="hero-advantages-mob-dot"></button>
+            <button class="hero-advantages-mob-dot"></button>
+            <button class="hero-advantages-mob-dot"></button>
+            <button class="hero-advantages-mob-dot"></button>
+            <button class="hero-advantages-mob-dot"></button>
+          </nav>
         </div>
       </section>
       <section class="rooms" id="rooms">
@@ -316,7 +495,7 @@
             </h2>
             <h2 class="plan-title plan-title--over heading" aria-hidden="true">
               Планируете поездку <br />
-              в Таганрог в ближайшее время
+              в Таганрог в ближайшее время
             </h2>
           </div>
         </div>
@@ -574,36 +753,35 @@
             </button>
           </nav>
         </div>
-        <div class="hotel-beige">
-          <section class="hotel-form-container container">
-            <h2 class="hotel-form-container-title heading">
-              Убедитесь лично <br />в уровне комфорта «Чехова»
-            </h2>
-            <div class="hotel-form-wrapper">
-              <h3 class="hotel-form-title">
-                Свяжитесь с администратором для консультации по номерам и датам
-              </h3>
-              <form action="POST" class="hotel-form">
-                <fieldset class="hotel-form-input-wrapper">
-                  <legend class="hotel-form-label">Ваш телефон</legend>
-                  <input
-                    class="hotel-form-input"
-                    type="text"
-                    name="phone"
-                    id="phone-2"
-                    placeholder="+7(___)___-__-__"
-                  />
-                </fieldset>
-                <button type="submit" class="hotel-form-btn">Связаться</button>
-              </form>
-            </div>
-          </section>
-        </div>
+
+        <section class="hotel-form-container container">
+          <h2 class="hotel-form-container-title heading">
+            Убедитесь лично <br />в уровне комфорта «Чехова»
+          </h2>
+          <div class="hotel-form-wrapper">
+            <h3 class="hotel-form-title">
+              Свяжитесь с администратором для консультации по номерам и датам
+            </h3>
+            <form action="POST" class="hotel-form">
+              <fieldset class="hotel-form-input-wrapper">
+                <legend class="hotel-form-label">Ваш телефон</legend>
+                <input
+                  class="hotel-form-input"
+                  type="text"
+                  name="phone"
+                  id="phone-2"
+                  placeholder="+7(___)___-__-__"
+                />
+              </fieldset>
+              <button type="submit" class="hotel-form-btn">Связаться</button>
+            </form>
+          </div>
+        </section>
       </section>
       <section class="partners">
-        <div class="partners-header">
+        <div class="partners-header container">
           <h2 class="partners-title heading">
-            Гастрономический Таганрог <br />начинается в «Чехове»:
+            <span>Гастрономический</span> Таганрог <br />начинается в «Чехове»:
           </h2>
           <p class="partners-subtitle heading">
             рестораны-партнеры, шведский стол и мясные деликатесы в дорогу
@@ -880,6 +1058,54 @@
                 </li>
               </ul>
             </div>
+            <nav class="privileges-slider-controls">
+              <button disabled class="privileges-slider-btn prev">
+                <svg
+                  width="10"
+                  height="9"
+                  viewBox="0 0 10 9"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_62_138)">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M10.0004 4.49015C9.99784 4.32454 9.92228 4.1692 9.79515 4.06835L6.10821 0.164873C6.01081 0.061841 5.8778 0.00298702 5.73834 0.00126036C5.59899 -0.000478625 5.46454 0.0550333 5.3648 0.155599C5.26502 0.256164 5.20801 0.393508 5.20633 0.53751C5.20466 0.681501 5.25843 0.8202 5.35581 0.923221L8.22066 3.95602H0.548606C0.40801 3.95393 0.272344 4.01025 0.172228 4.11216C0.072014 4.2142 0.0156369 4.35337 0.015625 4.49861C0.015625 4.64386 0.072014 4.78312 0.17224 4.88506C0.272344 4.98706 0.40801 5.04331 0.548594 5.04131H8.22068L5.35581 8.0741C5.25841 8.17713 5.20466 8.31584 5.20633 8.45983C5.20801 8.60379 5.26493 8.74116 5.36478 8.84173C5.46454 8.94229 5.5989 8.99787 5.73834 8.99608C5.87779 8.99433 6.01081 8.93547 6.10821 8.83237L9.79716 4.92703C9.92755 4.82247 10.0029 4.66076 10.0004 4.49034V4.49015Z"
+                      fill="currentColor"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_62_138">
+                      <rect width="10" height="9" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </button>
+              <button class="privileges-slider-btn next">
+                <svg
+                  width="10"
+                  height="9"
+                  viewBox="0 0 10 9"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_62_138)">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M10.0004 4.49015C9.99784 4.32454 9.92228 4.1692 9.79515 4.06835L6.10821 0.164873C6.01081 0.061841 5.8778 0.00298702 5.73834 0.00126036C5.59899 -0.000478625 5.46454 0.0550333 5.3648 0.155599C5.26502 0.256164 5.20801 0.393508 5.20633 0.53751C5.20466 0.681501 5.25843 0.8202 5.35581 0.923221L8.22066 3.95602H0.548606C0.40801 3.95393 0.272344 4.01025 0.172228 4.11216C0.072014 4.2142 0.0156369 4.35337 0.015625 4.49861C0.015625 4.64386 0.072014 4.78312 0.17224 4.88506C0.272344 4.98706 0.40801 5.04331 0.548594 5.04131H8.22068L5.35581 8.0741C5.25841 8.17713 5.20466 8.31584 5.20633 8.45983C5.20801 8.60379 5.26493 8.74116 5.36478 8.84173C5.46454 8.94229 5.5989 8.99787 5.73834 8.99608C5.87779 8.99433 6.01081 8.93547 6.10821 8.83237L9.79716 4.92703C9.92755 4.82247 10.0029 4.66076 10.0004 4.49034V4.49015Z"
+                      fill="currentColor"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_62_138">
+                      <rect width="10" height="9" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </button>
+            </nav>
           </div>
           <div class="privileges-guests">
             <h3 class="privileges-guests-title heading">нашим гостям:</h3>
@@ -936,7 +1162,7 @@
           </p>
           <p class="location-description">
             Гостиница расположена в центральной исторической части Таганрога.
-            <span class="underline">Вы получаете прямой доступ</span> <br />
+            <span class="underline">Вы получаете прямой доступ</span>
             к культурной жизни, деловой активности и главным
             достопримечательностям города.
           </p>
@@ -1208,6 +1434,83 @@
                     </figcaption>
                   </figure>
                 </li>
+                <li class="reviews-photo-item">
+                  <div class="reviews-photo-item-user">
+                    <img
+                      class="reviews-photo-item-avatar"
+                      src="/assets/images/avatar/user-1.png"
+                      alt=""
+                    />
+                    <span class="reviews-photo-item-username">
+                      anna.travels
+                    </span>
+                  </div>
+                  <figure class="reviews-photo-item-content">
+                    <img src="/assets/images/rev_1.webp" alt="" />
+                    <figcaption class="reviews-photo-item-desc">
+                      Редко встречается отель, где с первых минут чувствуешь
+                      себя желанным гостем. Очень красивый интерьер и отличный
+                      сервис.
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews-photo-item">
+                  <div class="reviews-photo-item-user">
+                    <img
+                      class="reviews-photo-item-avatar"
+                      src="/assets/images/avatar/user-2.png"
+                      alt=""
+                    />
+                    <span class="reviews-photo-item-username">
+                      katya.inspired
+                    </span>
+                  </div>
+                  <figure class="reviews-photo-item-content">
+                    <img src="/assets/images/rev_2.webp" alt="фототзыв" />
+                    <figcaption class="reviews-photo-item-desc">
+                      Уютное место для отдыха после насыщенного дня в городе.
+                      Особенно понравилась атмосфера и внимание к деталям
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews-photo-item">
+                  <div class="reviews-photo-item-user">
+                    <img
+                      class="reviews-photo-item-avatar"
+                      src="/assets/images/avatar/user-3.png"
+                      alt=""
+                    />
+                    <span class="reviews-photo-item-username">
+                      maria.weekend
+                    </span>
+                  </div>
+                  <figure class="reviews-photo-item-content">
+                    <img src="/assets/images/rev_3.webp" alt="фототзыв" />
+                    <figcaption class="reviews-photo-item-desc">
+                      Стильно, тихо и очень комфортно. Из тех отелей, куда
+                      хочется вернуться снова
+                    </figcaption>
+                  </figure>
+                </li>
+                <li class="reviews-photo-item">
+                  <div class="reviews-photo-item-user">
+                    <img
+                      class="reviews-photo-item-avatar"
+                      src="/assets/images/avatar/user-4.png"
+                      alt=""
+                    />
+                    <span class="reviews-photo-item-username">
+                      andrey.route
+                    </span>
+                  </div>
+                  <figure class="reviews-photo-item-content">
+                    <img src="/assets/images/rev_4.webp" alt="фототзыв" />
+                    <figcaption class="reviews-photo-item-desc">
+                      Идеальное место для поездки вдвоем. Красивые номера,
+                      приятная атмосфера и отличное расположение в центре города
+                    </figcaption>
+                  </figure>
+                </li>
               </ul>
             </div>
             <nav class="reviews-photo-slider-controls">
@@ -1261,12 +1564,149 @@
           </section>
           <section class="reviews-rate container">
             <h3 class="reviews-rate-title heading">
-              отзывы <br />
-              о нас
+              <span>отзывы </span>
+              <span> о нас</span>
             </h3>
             <div class="reviews-rate-slider">
               <div class="reviews-rate-slider-track">
                 <ul class="reviews-rate-list">
+                  <li class="reviews-rate-item">
+                    <div class="reviews-rate-item-content">
+                      <div class="reviews-rate-item-user">
+                        <img
+                          class="reviews-rate-item-avatar"
+                          src="/assets/images/avatar/user-5.png"
+                          alt=""
+                        />
+                        <div class="reviews-rate-item-user-info">
+                          <span class="reviews-rate-item-username"
+                            >Анна Волкова</span
+                          >
+                          <span class="reviews-rate-item-usertag"
+                            >@anna_volkova</span
+                          >
+                        </div>
+                      </div>
+                      <div class="reviews-rate-item-rating">
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                      </div>
+                      <p class="reviews-rate-item-desc">
+                        Провела здесь несколько дней в командировке. Удобный
+                        номер, хороший Wi-Fi и отличный ресторан прямо в
+                        гостинице.
+                      </p>
+                    </div>
+                    <div class="reviews-rate-item-location">
+                      <img src="/assets/icons/location.svg" alt="" />
+                      <span>Ростов-на-Дону</span>
+                    </div>
+                  </li>
+                  <li class="reviews-rate-item">
+                    <div class="reviews-rate-item-content">
+                      <div class="reviews-rate-item-user">
+                        <img
+                          class="reviews-rate-item-avatar"
+                          src="/assets/images/avatar/user-6.png"
+                          alt=""
+                        />
+                        <div class="reviews-rate-item-user-info">
+                          <span class="reviews-rate-item-username">Роман</span>
+                          <span class="reviews-rate-item-usertag">
+                            @lifestyle</span
+                          >
+                        </div>
+                      </div>
+                      <div class="reviews-rate-item-rating">
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                      </div>
+                      <p class="reviews-rate-item-desc">
+                        Идеальное место для поездки вдвоем. Красивые номера,
+                        приятная атмосфера и отличное расположение в центре
+                        города.
+                      </p>
+                    </div>
+                    <div class="reviews-rate-item-location">
+                      <img src="/assets/icons/location.svg" alt="" />
+                      <span>Москва</span>
+                    </div>
+                  </li>
+                  <li class="reviews-rate-item">
+                    <div class="reviews-rate-item-content">
+                      <div class="reviews-rate-item-user">
+                        <img
+                          class="reviews-rate-item-avatar"
+                          src="/assets/images/avatar/user-7.png"
+                          alt=""
+                        />
+                        <div class="reviews-rate-item-user-info">
+                          <span class="reviews-rate-item-username"
+                            >Ольга Немыкина</span
+                          >
+                          <span class="reviews-rate-item-usertag">
+                            travel.with.olga</span
+                          >
+                        </div>
+                      </div>
+                      <div class="reviews-rate-item-rating">
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                      </div>
+                      <p class="reviews-rate-item-desc">
+                        Уютное место для отдыха после насыщенного дня в городе.
+                        Особенно понравилась атмосфера и внимание к деталям
+                      </p>
+                    </div>
+                    <div class="reviews-rate-item-location">
+                      <img src="/assets/icons/location.svg" alt="" />
+                      <span>Санкт-Петербург</span>
+                    </div>
+                  </li>
+                  <li class="reviews-rate-item">
+                    <div class="reviews-rate-item-content">
+                      <div class="reviews-rate-item-user">
+                        <img
+                          class="reviews-rate-item-avatar"
+                          src="/assets/images/avatar/user-8.png"
+                          alt=""
+                        />
+                        <div class="reviews-rate-item-user-info">
+                          <span class="reviews-rate-item-username"
+                            >Александр
+                          </span>
+                          <span class="reviews-rate-item-usertag">
+                            @alex.and.sofia</span
+                          >
+                        </div>
+                      </div>
+                      <div class="reviews-rate-item-rating">
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                        <img src="/assets/icons/star.svg" alt="звезда" />
+                      </div>
+                      <p class="reviews-rate-item-desc">
+                        Редко встречается отель, где с первых минут чувствуешь
+                        себя желанным гостем. Очень красивый интерьер и отличный
+                        сервис.
+                      </p>
+                    </div>
+                    <div class="reviews-rate-item-location">
+                      <img src="/assets/icons/location.svg" alt="" />
+                      <span>Воронеж</span>
+                    </div>
+                  </li>
                   <li class="reviews-rate-item">
                     <div class="reviews-rate-item-content">
                       <div class="reviews-rate-item-user">
@@ -1728,6 +2168,7 @@
               </div>
             </div>
           </div>
+          <button class="faq-more" type="button">Ещё вопросы</button>
         </div>
       </section>
       <section class="offer container">
@@ -1786,7 +2227,7 @@
           <div class="footer-contacts heading">
             <a class="footer-phone" href="tel:+88001234500">8 800 123 45 00</a>
             <address class="footer-address">
-              г. Таганрог, ул. Петровская, 68-А
+              г. Таганрог, <span class="nowrap">ул. Петровская, 68-А</span>
             </address>
             <a class="footer-email" href="mailto:chehovinfo@mail.com"
               >chehovinfo@mail.com</a
@@ -1810,6 +2251,377 @@
         </div>
       </div>
     </footer>
+
+    <div class="contacts-modal" id="contacts-modal" aria-hidden="true">
+      <div class="contacts-modal-overlay" data-contacts-close></div>
+      <div
+        class="contacts-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Контакты"
+      >
+        <button
+          class="contacts-modal-close"
+          type="button"
+          aria-label="Закрыть"
+          data-contacts-close
+        >
+          <img src="assets/icons/close.svg" alt="" />
+        </button>
+
+        <div class="contacts-modal-logo">
+          <img
+            class="contacts-modal-logo-img"
+            src="assets/icons/logo.svg"
+            alt="Чехов бутик-отель"
+          />
+          <span class="contacts-modal-logo-text">бутик-отель</span>
+          <div class="stars">
+            <svg
+              width="14"
+              height="13"
+              viewBox="0 0 14 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+                fill="white"
+              />
+            </svg>
+            <svg
+              width="14"
+              height="13"
+              viewBox="0 0 14 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+                fill="white"
+              />
+            </svg>
+            <svg
+              width="14"
+              height="13"
+              viewBox="0 0 14 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+                fill="white"
+              />
+            </svg>
+            <svg
+              width="14"
+              height="13"
+              viewBox="0 0 14 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.55 12.6667L3.63333 7.98333L0 4.83333L4.8 4.41667L6.66667 0L8.53333 4.41667L13.3333 4.83333L9.7 7.98333L10.7833 12.6667L6.66667 10.1833L2.55 12.6667Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <figure class="contacts-modal-image">
+          <img src="/assets/images/bg_OC_4.webp" alt="Гостиница «Чехов»" />
+        </figure>
+
+        <dl class="contacts-modal-list">
+          <div class="contacts-modal-item">
+            <dt class="contacts-modal-label">Телефон для связи</dt>
+            <dd class="contacts-modal-value">
+              <a href="tel:88001234500">8 800 123 456 00</a>
+            </dd>
+          </div>
+          <div class="contacts-modal-item">
+            <dt class="contacts-modal-label">Адрес</dt>
+            <dd class="contacts-modal-value">
+              г. Таганрог,<br />ул. Петровская, 68-А
+            </dd>
+          </div>
+          <div class="contacts-modal-item">
+            <dt class="contacts-modal-label">Email</dt>
+            <dd class="contacts-modal-value">
+              <a href="mailto:chehovinfo@mail.com">chehovinfo@mail.com</a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- Поп-ап формы обратной связи -->
+    <div class="callback-modal" id="callback-modal" aria-hidden="true">
+      <div class="callback-modal-overlay" data-callback-close></div>
+      <div
+        class="callback-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="callback-modal-title"
+      >
+        <button
+          class="callback-modal-close"
+          type="button"
+          aria-label="Закрыть"
+          data-callback-close
+        >
+          <img src="assets/icons/close.svg" alt="" />
+        </button>
+
+        <h2 class="callback-modal-title heading" id="callback-modal-title">
+          Оставьте заявку
+        </h2>
+        <p class="callback-modal-subtitle">
+          Оставьте заявку и мы свяжемся с Вами в ближайшее время
+        </p>
+
+        <form class="callback-form" action="POST">
+          <fieldset class="callback-form-field">
+            <legend class="callback-form-label">Ваше имя</legend>
+            <input
+              class="callback-form-input"
+              type="text"
+              name="name"
+              placeholder="Введите имя"
+            />
+          </fieldset>
+          <fieldset class="callback-form-field">
+            <legend class="callback-form-label">Ваш телефон</legend>
+            <input
+              class="callback-form-input"
+              type="text"
+              name="phone"
+              id="phone-callback"
+              placeholder="+7(___)___-__-__"
+            />
+          </fieldset>
+          <fieldset class="callback-form-field callback-form-field--textarea">
+            <legend class="callback-form-label">Комментарий</legend>
+            <textarea
+              class="callback-form-input callback-form-textarea"
+              name="comment"
+              rows="3"
+              placeholder="Введите сообщение"
+            ></textarea>
+          </fieldset>
+
+          <label class="callback-form-agree">
+            <input
+              class="callback-form-agree-input"
+              type="checkbox"
+              name="agree"
+              checked
+            />
+            <span class="callback-form-agree-box">
+              <svg
+                width="12"
+                height="10"
+                viewBox="0 0 12 10"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 5L4.5 8.5L11 1.5"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <span class="callback-form-agree-text">
+              Я согласен(на) с
+              <a href="/">Политикой обработки персональных данных</a>
+            </span>
+          </label>
+
+          <button type="submit" class="callback-form-btn">Отправить</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Поп-ап с подробной информацией о номере -->
+    <div class="room-modal" id="room-modal" aria-hidden="true">
+      <div class="room-modal-overlay" data-room-close></div>
+      <div
+        class="room-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="room-modal-title"
+      >
+        <button
+          class="room-modal-close"
+          type="button"
+          aria-label="Закрыть"
+          data-room-close
+        >
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="room-modal-scroll">
+          <div class="room-modal-gallery">
+            <figure class="room-modal-main">
+              <img
+                class="room-modal-main-img"
+                src="/assets/images/room-1.png"
+                alt="Стандарт"
+              />
+              <button
+                disabled
+                class="room-modal-arrow prev"
+                type="button"
+                aria-label="Предыдущее фото"
+              >
+                <svg
+                  width="10"
+                  height="9"
+                  viewBox="0 0 10 9"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M10.0004 4.49015C9.99784 4.32454 9.92228 4.1692 9.79515 4.06835L6.10821 0.164873C6.01081 0.061841 5.8778 0.00298702 5.73834 0.00126036C5.59899 -0.000478625 5.46454 0.0550333 5.3648 0.155599C5.26502 0.256164 5.20801 0.393508 5.20633 0.53751C5.20466 0.681501 5.25843 0.8202 5.35581 0.923221L8.22066 3.95602H0.548606C0.40801 3.95393 0.272344 4.01025 0.172228 4.11216C0.072014 4.2142 0.0156369 4.35337 0.015625 4.49861C0.015625 4.64386 0.072014 4.78312 0.17224 4.88506C0.272344 4.98706 0.40801 5.04331 0.548594 5.04131H8.22068L5.35581 8.0741C5.25841 8.17713 5.20466 8.31584 5.20633 8.45983C5.20801 8.60379 5.26493 8.74116 5.36478 8.84173C5.46454 8.94229 5.5989 8.99787 5.73834 8.99608C5.87779 8.99433 6.01081 8.93547 6.10821 8.83237L9.79716 4.92703C9.92755 4.82247 10.0029 4.66076 10.0004 4.49034V4.49015Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+              <button
+                class="room-modal-arrow next"
+                type="button"
+                aria-label="Следующее фото"
+              >
+                <svg
+                  width="10"
+                  height="9"
+                  viewBox="0 0 10 9"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M10.0004 4.49015C9.99784 4.32454 9.92228 4.1692 9.79515 4.06835L6.10821 0.164873C6.01081 0.061841 5.8778 0.00298702 5.73834 0.00126036C5.59899 -0.000478625 5.46454 0.0550333 5.3648 0.155599C5.26502 0.256164 5.20801 0.393508 5.20633 0.53751C5.20466 0.681501 5.25843 0.8202 5.35581 0.923221L8.22066 3.95602H0.548606C0.40801 3.95393 0.272344 4.01025 0.172228 4.11216C0.072014 4.2142 0.0156369 4.35337 0.015625 4.49861C0.015625 4.64386 0.072014 4.78312 0.17224 4.88506C0.272344 4.98706 0.40801 5.04331 0.548594 5.04131H8.22068L5.35581 8.0741C5.25841 8.17713 5.20466 8.31584 5.20633 8.45983C5.20801 8.60379 5.26493 8.74116 5.36478 8.84173C5.46454 8.94229 5.5989 8.99787 5.73834 8.99608C5.87779 8.99433 6.01081 8.93547 6.10821 8.83237L9.79716 4.92703C9.92755 4.82247 10.0029 4.66076 10.0004 4.49034V4.49015Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </figure>
+
+            <ul class="room-modal-thumbs">
+              <li>
+                <button type="button" class="room-modal-thumb is-active">
+                  <img src="/assets/images/room-1.png" alt="Стандарт, фото 1" />
+                </button>
+              </li>
+              <li>
+                <button type="button" class="room-modal-thumb">
+                  <img src="/assets/images/room-2.png" alt="Стандарт, фото 2" />
+                </button>
+              </li>
+              <li>
+                <button type="button" class="room-modal-thumb">
+                  <img src="/assets/images/room-1.png" alt="Стандарт, фото 3" />
+                </button>
+              </li>
+              <li>
+                <button type="button" class="room-modal-thumb">
+                  <img src="/assets/images/room-2.png" alt="Стандарт, фото 4" />
+                </button>
+              </li>
+              <li>
+                <button type="button" class="room-modal-thumb">
+                  <img src="/assets/images/room-1.png" alt="Стандарт, фото 5" />
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <p class="room-modal-desc">
+            Элегантный и функциональный, уютный и просторный. Светлый интерьер
+            номера выполнен в сдержанной цветовой гамме. Песочные текстуры,
+            солнечное мерцание и переливы успокаивают, настраивают на позитивный
+            лад. Само пространство подсказывает сценарий идеального семейного
+            отдыха – под рукой все необходимое, интуитивно понятная планировка,
+            в которой комфортно как родителям, так и ребёнку.
+          </p>
+
+          <div class="room-modal-info">
+            <h3 class="room-modal-title heading" id="room-modal-title">
+              Стандарт
+            </h3>
+
+            <dl class="room-modal-specs">
+              <div class="room-modal-spec">
+                <dt>Площадь</dt>
+                <dd>59 м<sup>2</sup></dd>
+              </div>
+              <div class="room-modal-spec">
+                <dt>Вместимость</dt>
+                <dd>До 3х человек</dd>
+              </div>
+              <div class="room-modal-spec">
+                <dt>Тип питания</dt>
+                <dd>Завтрак (включен в стоимость)</dd>
+              </div>
+              <div class="room-modal-spec">
+                <dt>Вид из окна</dt>
+                <dd>Вид на площадь</dd>
+              </div>
+            </dl>
+
+            <p class="room-modal-price">
+              от <span class="number">20 117</span> ₽/сутки
+            </p>
+
+            <button class="room-modal-book" type="button">Забронировать</button>
+
+            <div class="room-modal-amenities">
+              <h4 class="room-modal-amenities-title">Удобства</h4>
+              <ul class="room-modal-amenities-list">
+                <li>
+                  <img src="/assets/icons/bed.svg" alt="" />1 большая кровать
+                </li>
+                <li><img src="/assets/icons/balcony.svg" alt="" />Балкон</li>
+                <li><img src="/assets/icons/shower.svg" alt="" />Душ</li>
+                <li>
+                  <img src="/assets/icons/pillow.svg" alt="" />Меню подушек
+                </li>
+                <li><img src="/assets/icons/bathrobe.svg" alt="" />Халаты</li>
+                <li><img src="/assets/icons/iron.svg" alt="" />Утюг</li>
+                <li><img src="/assets/icons/telephone.svg" alt="" />Телефон</li>
+                <li><img src="/assets/icons/cup.svg" alt="" />Чайный набор</li>
+                <li><img src="/assets/icons/mirror.svg" alt="" />Зеркало</li>
+                <li>
+                  <img src="/assets/icons/wifi.svg" alt="" />Бесплатный wi-fi
+                </li>
+                <li><img src="/assets/icons/safe.svg" alt="" />Сейф</li>
+                <li><img src="/assets/icons/wine.svg" alt="" />Мини-бар</li>
+                <li><img src="/assets/icons/hairdryer.svg" alt="" />Фен</li>
+                <li><img src="/assets/icons/table.svg" alt="" />Стол</li>
+                <li><img src="/assets/icons/ac.svg" alt="" />Кондиционер</li>
+                <li><img src="/assets/icons/tv.svg" alt="" />Телевизор</li>
+                <li>
+                  <img src="/assets/icons/bottle.svg" alt="" />Питьевая вода
+                </li>
+                <li><img src="/assets/icons/balcony.svg" alt="" />Терраса</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="room-modal-bar" aria-hidden="true">
+          <div class="room-modal-bar-thumb"></div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/imask@7/dist/imask.min.js"></script>
     <script src="script.js"></script>
   </body>
