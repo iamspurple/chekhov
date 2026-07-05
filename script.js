@@ -698,7 +698,7 @@ const initAdvantagesArcSlider = () => {
 
   const norm = (a) => {
     const half = RING / 2;
-    return (((a + half) % RING) + RING) % RING - half;
+    return ((((a + half) % RING) + RING) % RING) - half;
   };
 
   const render = () => {
@@ -1027,7 +1027,9 @@ const initMap = () => {
   const CENTER = [38.935383, 47.209512];
 
   ymaps3.ready
-    .then(() => fetch("/assets/map-style.json").then((r) => (r.ok ? r.json() : null)))
+    .then(() =>
+      fetch("/assets/map-style.json").then((r) => (r.ok ? r.json() : null)),
+    )
     .then((customization) => {
       const {
         YMap,
@@ -1038,6 +1040,7 @@ const initMap = () => {
 
       const map = new YMap(mapEl, {
         location: { center: CENTER, zoom: 14.4 },
+        behaviors: ["drag", "pinchZoom", "dblClick"],
       });
 
       map.addChild(

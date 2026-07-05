@@ -879,6 +879,14 @@
   height: clamp(32px, 2.4vw, 46px);
   background-color: white;
   border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .rooms-card-btn:hover {
+    background-color: var(--color-skin);
+  }
 }
 
 .rooms-card-btn img {
@@ -902,15 +910,28 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .rooms-slider-btn.prev svg {
   transform: rotate(180deg);
+  transition: all 0.3s ease;
 }
 
 .rooms-slider-btn:disabled {
   color: #b4b2ab;
   border: 1px solid #b4b2ab;
+}
+
+@media (hover: hover) {
+  .rooms-slider-btn:not(:disabled):hover {
+    background-color: var(--color-dark);
+  }
+
+  .rooms-slider-btn:not(:disabled):hover svg {
+    filter: invert();
+  }
 }
 
 .rooms-item-desc {
@@ -1008,6 +1029,14 @@
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .rooms-item-book-btn:hover {
+    background-color: #212122;
+  }
 }
 
 @media (max-width: 1280px) {
@@ -1180,6 +1209,14 @@
   font-weight: 700;
   text-transform: uppercase;
   border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .plan-form-btn:hover {
+    background-color: var(--color-skin);
+  }
 }
 
 .city {
@@ -1467,15 +1504,28 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .hotel-slider-btn.prev svg {
   transform: rotate(180deg);
+  transition: all 0.3s ease;
 }
 
 .hotel-slider-btn:disabled {
   color: #b4b2ab;
   border: 1px solid #b4b2ab;
+}
+
+@media (hover: hover) {
+  .hotel-slider-btn:not(:disabled):hover {
+    background-color: var(--color-dark);
+  }
+
+  .hotel-slider-btn:not(:disabled):hover svg {
+    filter: invert();
+  }
 }
 
 .hotel-form-container {
@@ -1587,6 +1637,14 @@
   font-weight: 700;
   text-transform: uppercase;
   border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .hotel-form-btn:hover {
+    background-color: var(--color-skin);
+  }
 }
 
 .partners {
@@ -1784,15 +1842,28 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .chibo-slider-btn.prev svg {
   transform: rotate(180deg);
+  transition: all 0.3s ease;
 }
 
 .chibo-slider-btn:disabled {
   color: #b4b2ab;
   border: 1px solid #b4b2ab;
+}
+
+@media (hover: hover) {
+  .chibo-slider-btn:not(:disabled):hover {
+    background-color: var(--color-dark);
+  }
+
+  .chibo-slider-btn:not(:disabled):hover svg {
+    filter: invert();
+  }
 }
 
 .factory {
@@ -2043,15 +2114,28 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .privileges-slider-btn.prev svg {
   transform: rotate(180deg);
+  transition: all 0.3s ease;
 }
 
 .privileges-slider-btn:disabled {
   color: #b4b2ab;
   border: 1px solid #b4b2ab;
+}
+
+@media (hover: hover) {
+  .privileges-slider-btn:not(:disabled):hover {
+    background-color: var(--color-dark);
+  }
+
+  .privileges-slider-btn:not(:disabled):hover svg {
+    filter: invert();
+  }
 }
 
 .privileges-guests {
@@ -2374,6 +2458,14 @@
   font-weight: 700;
   text-transform: uppercase;
   border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .location-form-btn:hover {
+    background-color: var(--color-skin);
+  }
 }
 
 .reasons {
@@ -2633,15 +2725,28 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .reviews-photo-slider-btn.prev svg {
   transform: rotate(180deg);
+  transition: all 0.3s ease;
 }
 
 .reviews-photo-slider-btn:disabled {
   color: #b4b2ab;
   border: 1px solid #b4b2ab;
+}
+
+@media (hover: hover) {
+  .reviews-photo-slider-btn:not(:disabled):hover {
+    background-color: var(--color-dark);
+  }
+
+  .reviews-photo-slider-btn:not(:disabled):hover svg {
+    filter: invert();
+  }
 }
 
 .reviews-rate {
@@ -2781,15 +2886,28 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .reviews-rate-slider-btn.prev svg {
   transform: rotate(180deg);
+  transition: all 0.3s ease;
 }
 
 .reviews-rate-slider-btn:disabled {
   color: #b4b2ab;
   border: 1px solid #b4b2ab;
+}
+
+@media (hover: hover) {
+  .reviews-rate-slider-btn:not(:disabled):hover {
+    background-color: var(--color-dark);
+  }
+
+  .reviews-rate-slider-btn:not(:disabled):hover svg {
+    filter: invert();
+  }
 }
 
 .faq {
@@ -2832,6 +2950,14 @@
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+  .faq-btn:hover {
+    filter: invert();
+  }
 }
 
 .faq-list {
@@ -2880,6 +3006,12 @@
   border-radius: 50%;
   background-color: var(--color-dark);
   transition: background-color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .faq-item-icon:hover {
+    background-color: var(--color-melange);
+  }
 }
 
 .faq-item-icon-plus,
@@ -3047,6 +3179,14 @@
   font-weight: 700;
   text-transform: uppercase;
   border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .offer-form-btn:hover {
+    background-color: var(--color-skin);
+  }
 }
 
 .footer {
@@ -3092,6 +3232,18 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 135%;
+}
+
+.footer-nav-list li a {
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+  .footer-nav-list li a:hover {
+    color: var(--color-skin);
+    border-color: var(--color-skin);
+  }
 }
 
 .footer-contacts {
@@ -4844,11 +4996,13 @@
   font-size: clamp(12px, 0.73vw, 14px);
   letter-spacing: 0.05em;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: all 0.3s ease;
 }
 
-.room-modal-book:hover {
-  opacity: 0.9;
+@media (hover: hover) {
+  .room-modal-book:hover {
+    background-color: #212122;
+  }
 }
 
 .room-modal-amenities-title {
@@ -5129,11 +5283,13 @@
   letter-spacing: 0.02em;
   border-radius: 50px;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: all 0.3s ease;
 }
 
-.callback-form-btn:hover {
-  opacity: 0.9;
+@media (hover: hover) {
+  .callback-form-btn:hover {
+    background-color: #212122;
+  }
 }
 
 @media (max-width: 768px) {
