@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Чехов — Бутик-отель</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=5" />
+    <script src="https://api-maps.yandex.ru/v3/?apikey=f9a6dbbb-8eee-45ae-bed6-19918f52ed17&lang=ru_RU"></script>
   </head>
   <body>
     <header class="header">
@@ -202,6 +203,70 @@
       <section class="hero">
         <div class="hero-bg">
           <img src="assets/images/bg_1.webp" alt="Интерьер гостиницы Чехов" />
+        </div>
+
+        <div class="hero-advantages" aria-hidden="true">
+          <div class="hero-advantages-arc"></div>
+          <ul class="hero-advantages-list">
+            <li class="hero-advantages-item">
+              <span class="hero-advantages-dot"></span>
+              <div class="hero-advantages-figure">
+                <img src="/assets/images/1й экран_шведский стол.webp" alt="" />
+              </div>
+              <div class="hero-advantages-text">
+                <h3 class="hero-advantages-title heading">Шведский стол</h3>
+                <p class="hero-advantages-desc">
+                  каждое утро c ежедневно обновляемым меню
+                </p>
+              </div>
+            </li>
+            <li class="hero-advantages-item">
+              <span class="hero-advantages-dot"></span>
+              <div class="hero-advantages-figure">
+                <img src="/assets/images/1й экран_ресторан.webp" alt="" />
+              </div>
+              <div class="hero-advantages-text">
+                <h3 class="hero-advantages-title heading">Ресторан</h3>
+                <p class="hero-advantages-desc">
+                  в здании гостиницы с доставкой блюд в номер
+                </p>
+              </div>
+            </li>
+            <li class="hero-advantages-item">
+              <span class="hero-advantages-dot"></span>
+              <div class="hero-advantages-figure">
+                <img src="/assets/images/1й экран_парковка.webp" alt="" />
+              </div>
+              <div class="hero-advantages-text">
+                <h3 class="hero-advantages-title heading">Собственная парковка</h3>
+                <p class="hero-advantages-desc">на территории гостиницы</p>
+              </div>
+            </li>
+            <li class="hero-advantages-item">
+              <span class="hero-advantages-dot"></span>
+              <div class="hero-advantages-figure">
+                <img src="/assets/images/1й экран_сервис лп.webp" alt="" />
+              </div>
+              <div class="hero-advantages-text">
+                <h3 class="hero-advantages-title heading">
+                  Сервис личного помощника
+                </h3>
+              </div>
+            </li>
+            <li class="hero-advantages-item">
+              <span class="hero-advantages-dot"></span>
+              <div class="hero-advantages-figure">
+                <img src="/assets/images/1й экран_карта гостя.webp" alt="" />
+              </div>
+              <div class="hero-advantages-text">
+                <h3 class="hero-advantages-title heading">Карта гостя</h3>
+                <p class="hero-advantages-desc">
+                  со скидками в ресторанах, магазинах колбас и мясных
+                  деликатесов местного производителя
+                </p>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <div class="hero-content container">
@@ -1167,7 +1232,9 @@
             достопримечательностям города.
           </p>
         </div>
-        <div class="location-content container">
+        <div class="location-content">
+          <div id="map"></div>
+          <div class="map-bg" aria-hidden="true"></div>
           <ul class="location-list">
             <li class="location-item">
               <div class="location-item-icon">
@@ -2355,7 +2422,6 @@
       </div>
     </div>
 
-    <!-- Поп-ап формы обратной связи -->
     <div class="callback-modal" id="callback-modal" aria-hidden="true">
       <div class="callback-modal-overlay" data-callback-close></div>
       <div
@@ -2445,7 +2511,6 @@
       </div>
     </div>
 
-    <!-- Поп-ап с подробной информацией о номере -->
     <div class="room-modal" id="room-modal" aria-hidden="true">
       <div class="room-modal-overlay" data-room-close></div>
       <div
@@ -2623,6 +2688,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/imask@7/dist/imask.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=5"></script>
   </body>
 </html>
