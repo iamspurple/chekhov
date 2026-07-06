@@ -106,6 +106,7 @@ button {
   --color-dark: #353536;
   --color-melange: #b3b1a9;
   font-family: var(--font-primary);
+  scrollbar-gutter: stable;
 }
 
 .container {
