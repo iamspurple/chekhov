@@ -3834,6 +3834,10 @@ button {
     display: none;
   }
 
+  .nav-drawer-panel {
+    width: 100%;
+  }
+
   .hero {
     height: auto;
     max-height: none;
