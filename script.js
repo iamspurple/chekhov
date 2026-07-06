@@ -970,8 +970,64 @@ const initMap = () => {
     });
 };
 
+const initFormReveal = () => {
+  // Только десктоп: формы (кроме plan-form) прилетают снизу при скролле.
+  if (!window.matchMedia("(min-width: 1025px)").matches) return;
+  if (typeof IntersectionObserver === "undefined") return;
+
+  const wrappers = document.querySelectorAll(
+    ".hotel-form-wrapper, .location-form-wrapper, .offer-form-wrapper",
+  );
+  if (!wrappers.length) return;
+
+  // Включаем скрытое стартовое состояние только когда наблюдатель готов.
+  document.documentElement.classList.add("forms-reveal-ready");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-inview");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.25 },
+  );
+
+  wrappers.forEach((wrapper) => observer.observe(wrapper));
+};
+
+const initLogosReveal = () => {
+  // Только десктоп: логотипы партнёров прилетают справа при скролле.
+  if (!window.matchMedia("(min-width: 1025px)").matches) return;
+  if (typeof IntersectionObserver === "undefined") return;
+
+  const list = document.querySelector(".privileges-rest-list");
+  if (!list) return;
+
+  // Включаем скрытое стартовое состояние только когда наблюдатель готов.
+  document.documentElement.classList.add("logos-reveal-ready");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-inview");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.35 },
+  );
+
+  observer.observe(list);
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   initIntro();
+  initFormReveal();
+  initLogosReveal();
   initHeaderScrollState();
   initFloatingHeader();
   initNavDrawer();

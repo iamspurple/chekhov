@@ -2137,6 +2137,49 @@ button {
   text-decoration: underline;
 }
 
+/* Логотипы партнёров прилетают справа при попадании в зону видимости.
+   Только десктоп; стартовое скрытое состояние включает корневой класс
+   logos-reveal-ready (навешивает JS лишь на широких экранах). */
+@media (min-width: 1025px) {
+  .logos-reveal-ready .privileges-rest-list {
+    overflow: hidden;
+  }
+
+  .logos-reveal-ready .privileges-rest-item {
+    opacity: 0;
+    transform: translateX(120px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .logos-reveal-ready .privileges-rest-list.is-inview .privileges-rest-item {
+    opacity: 1;
+    transform: none;
+  }
+
+  .logos-reveal-ready
+    .privileges-rest-list.is-inview
+    .privileges-rest-item:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+  .logos-reveal-ready
+    .privileges-rest-list.is-inview
+    .privileges-rest-item:nth-child(3) {
+    transition-delay: 0.2s;
+  }
+  .logos-reveal-ready
+    .privileges-rest-list.is-inview
+    .privileges-rest-item:nth-child(4) {
+    transition-delay: 0.3s;
+  }
+  .logos-reveal-ready
+    .privileges-rest-list.is-inview
+    .privileges-rest-item:nth-child(5) {
+    transition-delay: 0.4s;
+  }
+}
+
 .privileges-slider-controls {
   display: none;
   gap: clamp(3px, 0.26vw, 5px);
@@ -3178,6 +3221,29 @@ button {
   max-width: 360px;
   text-align: center;
   color: white;
+}
+
+/* Формы (кроме plan-form) прилетают снизу при попадании в зону видимости.
+   Только десктоп: скрытое стартовое состояние включается корневым классом
+   forms-reveal-ready, который навешивает JS лишь на широких экранах, поэтому
+   без JS и на мобилке формы остаются на месте. */
+@media (min-width: 1025px) {
+  .forms-reveal-ready .hotel-form-wrapper,
+  .forms-reveal-ready .location-form-wrapper,
+  .forms-reveal-ready .offer-form-wrapper {
+    opacity: 0;
+    transform: translateY(90px);
+    transition:
+      opacity 0.9s ease,
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .forms-reveal-ready .hotel-form-wrapper.is-inview,
+  .forms-reveal-ready .location-form-wrapper.is-inview,
+  .forms-reveal-ready .offer-form-wrapper.is-inview {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .offer-form {
