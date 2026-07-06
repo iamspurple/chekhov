@@ -92,6 +92,11 @@
   border: none;
 }
 
+button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 :root {
   --font-primary: "Mulish";
   --font-heading: "TenorSans";
@@ -858,8 +863,7 @@
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
-  transform: perspective(1000px)
-    translateX(calc(var(--rooms-slide-x, 0) * 1px))
+  transform: perspective(1000px) translateX(calc(var(--rooms-slide-x, 0) * 1px))
     rotateY(calc(var(--rooms-flip-deg, 0) * 1deg));
 }
 
