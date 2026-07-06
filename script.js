@@ -136,9 +136,7 @@ const initRoomsTabs = () => {
   // Первым трём категориям назначаем разные варианты анимации для теста,
   // остальным — flip по умолчанию.
   const roomsVariants = ["flip", "slide", "fade"];
-  wraps.forEach((wrap, i) =>
-    initRoomsSlider(wrap, roomsVariants[i] ?? "flip"),
-  );
+  wraps.forEach((wrap, i) => initRoomsSlider(wrap, roomsVariants[i] ?? "flip"));
 
   const activate = (index) => {
     tabs.forEach((tab, i) => tab.classList.toggle("active", i === index));
@@ -178,7 +176,9 @@ const initRoomsSlider = (root, variant = "flip") => {
   // fade намеренно даёт null, поэтому проверяем именно наличие ключа,
   // а не «истинность» значения (иначе fade откатился бы к flip).
   const cfg =
-    variant in ROOMS_TRANSFORMS ? ROOMS_TRANSFORMS[variant] : ROOMS_TRANSFORMS.flip;
+    variant in ROOMS_TRANSFORMS
+      ? ROOMS_TRANSFORMS[variant]
+      : ROOMS_TRANSFORMS.flip;
 
   let roomsSlideIndex = 0;
   let roomsIsAnimating = false;
@@ -853,7 +853,7 @@ const initCallbackModal = () => {
   if (!modal) return;
 
   const openBtns = document.querySelectorAll(
-    ".header-book-btn, .faq-btn, .callback-open",
+    ".header-book-btn, .faq-btn, .callback-open, .rooms-item-book-btn",
   );
 
   const openModal = () => {
@@ -971,6 +971,7 @@ const initMap = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  initIntro();
   initHeaderScrollState();
   initFloatingHeader();
   initNavDrawer();

@@ -807,7 +807,6 @@ button {
   width: 100%;
   overflow: hidden;
   display: grid;
-  justify-items: center;
   justify-content: center;
   grid-template-columns: min(50vw, 840px) min(40vw, 670px);
   column-gap: clamp(15px, 1.56vw, 30px);
@@ -936,8 +935,8 @@ button {
 }
 
 .rooms-slider-btn {
-  width: clamp(32px, 2.4vw, 46px);
-  height: clamp(32px, 2.4vw, 46px);
+  width: 46px;
+  height: 46px;
   border: 1px solid black;
   color: black;
   border-radius: 50%;
@@ -1100,6 +1099,7 @@ button {
 }
 
 .plan-decoration-wrapper {
+  padding-top: clamp(32px, 3.33vw, 64px);
   position: sticky;
   top: 120px;
   z-index: 0;
@@ -1531,8 +1531,8 @@ button {
 }
 
 .hotel-slider-btn {
-  width: clamp(32px, 2.4vw, 46px);
-  height: clamp(32px, 2.4vw, 46px);
+  width: 46px;
+  height: 46px;
   border: 1px solid black;
   color: black;
   border-radius: 50%;
@@ -1870,8 +1870,8 @@ button {
 }
 
 .chibo-slider-btn {
-  width: clamp(32px, 2.4vw, 46px);
-  height: clamp(32px, 2.4vw, 46px);
+  width: 46px;
+  height: 46px;
   border: 1px solid black;
   color: black;
   border-radius: 50%;
@@ -1984,6 +1984,7 @@ button {
   gap: clamp(32px, 3.125vw, 60px);
   position: relative;
   z-index: 10;
+  padding-bottom: clamp(50px, 5.73vw, 110px);
 }
 
 .privileges-title {
@@ -2142,8 +2143,8 @@ button {
 }
 
 .privileges-slider-btn {
-  width: clamp(32px, 2.4vw, 46px);
-  height: clamp(32px, 2.4vw, 46px);
+  width: 46px;
+  height: 46px;
   border: 1px solid black;
   color: black;
   border-radius: 50%;
@@ -2176,6 +2177,7 @@ button {
 }
 
 .privileges-guests {
+  padding-inline: clamp(37px, 3.65vw, 70px);
   display: flex;
   flex-direction: column;
   gap: clamp(32px, 3.125vw, 60px);
@@ -2255,6 +2257,7 @@ button {
 }
 
 .location-description {
+  max-width: 800px;
   font-size: 16px;
   line-height: 135%;
   font-weight: 500;
@@ -2754,8 +2757,8 @@ button {
 }
 
 .reviews-photo-slider-btn {
-  width: clamp(32px, 2.4vw, 46px);
-  height: clamp(32px, 2.4vw, 46px);
+  width: 46px;
+  height: 46px;
   border: 1px solid black;
   color: black;
   border-radius: 50%;
@@ -2915,8 +2918,8 @@ button {
 }
 
 .reviews-rate-slider-btn {
-  width: clamp(32px, 2.4vw, 46px);
-  height: clamp(32px, 2.4vw, 46px);
+  width: 46px;
+  height: 46px;
   border: 1px solid black;
   color: black;
   border-radius: 50%;
@@ -4082,6 +4085,11 @@ button {
     font-size: 28px;
   }
 
+  .plan-title-wrapper {
+    max-width: 290px;
+    margin: 0 auto;
+  }
+
   .plan-title-container {
     top: 30px;
   }
@@ -4094,6 +4102,10 @@ button {
   .location-form-container {
     padding-top: 30px;
     gap: 90px;
+  }
+
+  .plan-decoration-wrapper {
+    padding-top: 125px;
   }
 
   .plan-decoration-image {
@@ -4429,10 +4441,12 @@ button {
 
   .privileges-item-desc {
     font-size: 16px;
+    max-width: 100%;
   }
 
   .privileges-guests {
     gap: 20px;
+    padding: 0;
   }
 
   .privileges-guests-title {
@@ -4441,6 +4455,7 @@ button {
 
   .privileges-guests-list {
     padding: 0;
+    gap: 0;
   }
 
   .privileges-guests-item-img {
@@ -4545,6 +4560,10 @@ button {
   .reviews-rate {
     flex-direction: column;
     gap: 30px;
+  }
+
+  .reviews-rate-slider {
+    align-items: center;
   }
 
   .reviews-rate-title {
