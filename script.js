@@ -1,3 +1,21 @@
+const initIntro = () => {
+  const intro = document.getElementById("intro");
+  if (!intro || !document.documentElement.classList.contains("intro-active")) {
+    return;
+  }
+
+  const finish = () => {
+    if (!document.documentElement.classList.contains("intro-active")) return;
+    document.documentElement.classList.remove("intro-active");
+  };
+
+  intro.addEventListener("animationend", (e) => {
+    if (e.animationName === "intro-fade") finish();
+  });
+
+  setTimeout(finish, 4200);
+};
+
 const initHeaderScrollState = () => {
   const header = document.querySelector(".header");
   const hero = document.querySelector(".hero");

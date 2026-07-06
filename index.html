@@ -6,8 +6,85 @@
     <title>Чехов — Бутик-отель</title>
     <link rel="stylesheet" href="style.css?v=5" />
     <script src="https://api-maps.yandex.ru/v3/?apikey=f9a6dbbb-8eee-45ae-bed6-19918f52ed17&lang=ru_RU"></script>
+    <script>
+      (() => {
+        try {
+          if (
+            window.matchMedia("(min-width: 1025px)").matches &&
+            !sessionStorage.getItem("intro-seen")
+          ) {
+            document.documentElement.classList.add("intro-active");
+            sessionStorage.setItem("intro-seen", "1");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
+    <div class="intro" id="intro" aria-hidden="true">
+      <div class="intro-bg"></div>
+      <div class="intro-sharp"></div>
+      <div class="intro-outline">
+        <svg
+          class="intro-outline-svg"
+          viewBox="0 0 256 473"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient
+              id="intro-kh-grad"
+              x1="158"
+              y1="3"
+              x2="158"
+              y2="478"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#E2C28E" />
+              <stop offset="0.317308" stop-color="#ffffff" />
+              <stop offset="0.557692" stop-color="#D9AE68" />
+              <stop offset="0.75" stop-color="#AA9A7E" />
+              <stop offset="0.829474" stop-color="#F5F1E7" />
+              <stop offset="0.915789" stop-color="#938266" />
+              <stop offset="0.99574" stop-color="#D4BF9D" />
+            </linearGradient>
+            <filter
+              id="intro-kh-inner"
+              x="-25%"
+              y="-25%"
+              width="150%"
+              height="150%"
+            >
+              <feComponentTransfer in="SourceAlpha">
+                <feFuncA type="table" tableValues="1 0" />
+              </feComponentTransfer>
+              <feGaussianBlur stdDeviation="14" />
+              <feOffset dx="0" dy="2" result="off" />
+              <feFlood flood-color="#120c04" flood-opacity="0.55" />
+              <feComposite in2="off" operator="in" />
+              <feComposite in2="SourceAlpha" operator="in" />
+            </filter>
+          </defs>
+          <path
+            d="M128 3C197.036 3 253 58.9644 253 128C253 174.548 227.556 215.15 189.818 236.665L228 469.071H28L66.1807 236.665C28.4438 215.15 3.00002 174.547 3 128C3 58.9644 58.9644 3 128 3Z"
+            fill="#000000"
+            filter="url(#intro-kh-inner)"
+          />
+          <path
+            d="M128 3C197.036 3 253 58.9644 253 128C253 174.548 227.556 215.15 189.818 236.665L228 469.071H28L66.1807 236.665C28.4438 215.15 3.00002 174.547 3 128C3 58.9644 58.9644 3 128 3Z"
+            fill="none"
+            stroke="url(#intro-kh-grad)"
+            stroke-width="3.5"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <div class="intro-text">
+        <p class="intro-text-line">Ваш ключ</p>
+        <p class="intro-text-sub">к безупречному отдыху</p>
+      </div>
+    </div>
     <header class="header">
       <div class="header-top">
         <button
