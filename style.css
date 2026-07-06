@@ -1240,6 +1240,7 @@ button {
 
 .plan-form-btn {
   height: 88px;
+  background-color: white;
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
@@ -1668,6 +1669,7 @@ button {
 
 .hotel-form-btn {
   height: 88px;
+  background-color: white;
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
@@ -2489,6 +2491,7 @@ button {
 
 .location-form-btn {
   height: 88px;
+  background-color: white;
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
@@ -3210,6 +3213,7 @@ button {
 
 .offer-form-btn {
   height: 88px;
+  background-color: white;
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
