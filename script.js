@@ -128,249 +128,133 @@ const initPhoneMasks = () => {
 };
 
 const initRoomsTabs = () => {
-  const tabs = document.querySelectorAll(".rooms-tab");
+  const tabs = Array.from(document.querySelectorAll(".rooms-tab"));
+  const wraps = Array.from(document.querySelectorAll(".rooms-slider-wrap"));
+  if (!tabs.length || !wraps.length) return;
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      tabs.forEach((t) => t.classList.remove("active"));
-      tab.classList.add("active");
-    });
+  // Каждый wrap — самостоятельный слайдер со своими слайдами и кнопками.
+  // Первым трём категориям назначаем разные варианты анимации для теста,
+  // остальным — flip по умолчанию.
+  const roomsVariants = ["flip", "slide", "fade"];
+  wraps.forEach((wrap, i) =>
+    initRoomsSlider(wrap, roomsVariants[i] ?? "flip"),
+  );
+
+  const activate = (index) => {
+    tabs.forEach((tab, i) => tab.classList.toggle("active", i === index));
+    wraps.forEach((wrap, i) => wrap.classList.toggle("is-hidden", i !== index));
+  };
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener("click", () => activate(i));
   });
+
+  activate(0);
 };
 
-const initRoomsSlider = () => {
-  const roomsSlides = [
-    {
-      name: "Стандарт",
-      image: "/assets/images/room-1.png",
-      area: "59 м<sup>2</sup>",
-      price: "20 117",
-      facility1: [
-        { icon: "bed.svg", text: "1 большая кровать" },
-        { icon: "balcony.svg", text: "Балкон" },
-        { icon: "shower.svg", text: "Душ" },
-      ],
-      facility2: [
-        { icon: "wifi.svg", text: "Бесплатный Wi-Fi" },
-        { icon: "safe.svg", text: "Сейф" },
-        { icon: "wine.svg", text: "Бар" },
-      ],
-    },
-    {
-      name: "Стандарт",
-      image: "/assets/images/room-2.png",
-      area: "45 м<sup>2</sup>",
-      price: "17 490",
-      facility1: [
-        { icon: "bed.svg", text: "2 кровати" },
-        { icon: "ac.svg", text: "Кондиционер" },
-        { icon: "shower.svg", text: "Душ" },
-      ],
-      facility2: [
-        { icon: "wifi.svg", text: "Бесплатный Wi-Fi" },
-        { icon: "safe.svg", text: "Сейф" },
-        { icon: "tv.svg", text: "ТВ" },
-      ],
-    },
-    {
-      name: "Стандарт",
-      image: "/assets/images/room-1.png",
-      area: "52 м<sup>2</sup>",
-      price: "19 250",
-      facility1: [
-        { icon: "bed.svg", text: "1 большая кровать" },
-        { icon: "balcony.svg", text: "Балкон" },
-        { icon: "bathrobe.svg", text: "Халат" },
-      ],
-      facility2: [
-        { icon: "wifi.svg", text: "Бесплатный Wi-Fi" },
-        { icon: "wine.svg", text: "Бар" },
-        { icon: "telephone.svg", text: "Телефон" },
-      ],
-    },
-    {
-      name: "Стандарт",
-      image: "/assets/images/room-2.png",
-      area: "48 м<sup>2</sup>",
-      price: "18 300",
-      facility1: [
-        { icon: "bed.svg", text: "1 большая кровать" },
-        { icon: "shower.svg", text: "Душ" },
-        { icon: "hairdryer.svg", text: "Фен" },
-      ],
-      facility2: [
-        { icon: "wifi.svg", text: "Бесплатный Wi-Fi" },
-        { icon: "safe.svg", text: "Сейф" },
-        { icon: "mirror.svg", text: "Зеркало" },
-      ],
-    },
-  ];
+// Заготовленные варианты перехода между слайдами.
+// fade  — простое затухание;
+// slide — сдвиг по X с затуханием;
+// flip  — переворот (rotateY) с затуханием.
+const ROOMS_FADE_MS = 300;
+const ROOMS_FLIP_DEG = 22;
+const ROOMS_SLIDE_OFFSET = 24;
 
-  const roomsSlideMainImg = document.getElementById("rooms-slide-main-img");
-  if (!roomsSlideMainImg) return;
+const ROOMS_TRANSFORMS = {
+  fade: null,
+  slide: { prop: "--rooms-slide-x", amount: ROOMS_SLIDE_OFFSET },
+  flip: { prop: "--rooms-flip-deg", amount: ROOMS_FLIP_DEG },
+};
 
-  const roomsSlideMainName = document.getElementById("rooms-slide-main-name");
-  const roomsSlideNextImg = document.getElementById("rooms-slide-next-img");
-  const roomsSlideNextName = document.getElementById("rooms-slide-next-name");
-  const roomsSlideArea = document.getElementById("rooms-slide-area");
-  const roomsSlidePrice = document.getElementById("rooms-slide-price");
-  const roomsSlideFacility1 = document.getElementById("rooms-slide-facility-1");
-  const roomsSlideFacility2 = document.getElementById("rooms-slide-facility-2");
-  const roomsPrevBtn = document.querySelector(".rooms-slider-btn.prev");
-  const roomsNextBtn = document.querySelector(".rooms-slider-btn.next");
-  const roomsMainFigure = roomsSlideMainImg.closest(".rooms-card-image");
-  const roomsNextFigure = roomsSlideNextImg.closest(".rooms-card-image");
+const initRoomsSlider = (root, variant = "flip") => {
+  if (!root) return;
 
-  const ROOMS_FADE_MS = 300;
-  const ROOMS_SLIDE_OFFSET = 24;
-  const ROOMS_FLIP_DEG = 22;
-  const ROOMS_TRANSITION_VARIANT = "flip";
+  const items = Array.from(root.querySelectorAll(".rooms-item"));
+  if (!items.length) return;
+
+  const roomsPrevBtn = root.querySelector(".rooms-slider-btn.prev");
+  const roomsNextBtn = root.querySelector(".rooms-slider-btn.next");
+
+  // fade намеренно даёт null, поэтому проверяем именно наличие ключа,
+  // а не «истинность» значения (иначе fade откатился бы к flip).
+  const cfg =
+    variant in ROOMS_TRANSFORMS ? ROOMS_TRANSFORMS[variant] : ROOMS_TRANSFORMS.flip;
 
   let roomsSlideIndex = 0;
   let roomsIsAnimating = false;
 
-  const renderFacility = (listEl, items) => {
-    listEl.innerHTML = items
-      .map(
-        (item) =>
-          '<li><img src="/assets/icons/' +
-          item.icon +
-          '" alt="" />' +
-          item.text +
-          "</li>",
-      )
-      .join("");
-  };
+  // Изображения активного и предактивного слайдов (те, что сейчас видны).
+  const visibleFigures = () =>
+    items
+      .filter((item) => item.matches(".is-active, .is-preactive"))
+      .map((item) => item.querySelector(".rooms-card-image"));
 
-  const applyRoomsSlideContent = () => {
-    const current = roomsSlides[roomsSlideIndex];
-    const next = roomsSlides[roomsSlideIndex + 1];
-
-    roomsSlideMainImg.src = current.image;
-    roomsSlideMainImg.alt = current.name;
-    roomsSlideMainName.textContent = current.name;
-    roomsSlideArea.innerHTML = current.area;
-    roomsSlidePrice.textContent = current.price;
-    renderFacility(roomsSlideFacility1, current.facility1);
-    renderFacility(roomsSlideFacility2, current.facility2);
-
-    roomsSlideNextImg.src = next.image;
-    roomsSlideNextImg.alt = next.name;
-    roomsSlideNextName.textContent = next.name;
+  const setActive = (index) => {
+    items.forEach((item, i) => {
+      item.classList.toggle("is-active", i === index);
+      item.classList.toggle("is-preactive", i === index + 1);
+    });
   };
 
   const updateRoomsNavState = () => {
     roomsPrevBtn.disabled = roomsSlideIndex === 0;
-    roomsNextBtn.disabled = roomsSlideIndex >= roomsSlides.length - 2;
-  };
-
-  const goToRoomsSlideFade = (newIndex) => {
-    roomsMainFigure.classList.add("is-fading");
-    roomsNextFigure.classList.add("is-fading");
-
-    setTimeout(() => {
-      roomsSlideIndex = newIndex;
-      applyRoomsSlideContent();
-      roomsMainFigure.classList.remove("is-fading");
-      roomsNextFigure.classList.remove("is-fading");
-
-      updateRoomsNavState();
-      roomsIsAnimating = false;
-    }, ROOMS_FADE_MS);
-  };
-
-  const goToRoomsSlideSlide = (newIndex) => {
-    const direction = newIndex > roomsSlideIndex ? 1 : -1;
-    const figures = [roomsMainFigure, roomsNextFigure];
-
-    figures.forEach((figure) => {
-      figure.style.setProperty(
-        "--rooms-slide-x",
-        String(-direction * ROOMS_SLIDE_OFFSET),
-      );
-      figure.classList.add("is-slide-out");
-    });
-
-    setTimeout(() => {
-      roomsSlideIndex = newIndex;
-      applyRoomsSlideContent();
-
-      figures.forEach((figure) => {
-        figure.classList.add("is-slide-instant");
-        figure.classList.remove("is-slide-out");
-        figure.style.setProperty(
-          "--rooms-slide-x",
-          String(direction * ROOMS_SLIDE_OFFSET),
-        );
-      });
-
-      requestAnimationFrame(() => {
-        figures.forEach((figure) => {
-          figure.classList.remove("is-slide-instant");
-          figure.style.setProperty("--rooms-slide-x", "0");
-        });
-
-        setTimeout(() => {
-          updateRoomsNavState();
-          roomsIsAnimating = false;
-        }, ROOMS_FADE_MS);
-      });
-    }, ROOMS_FADE_MS);
-  };
-
-  const goToRoomsSlideFlip = (newIndex) => {
-    const direction = newIndex > roomsSlideIndex ? 1 : -1;
-    const figures = [roomsMainFigure, roomsNextFigure];
-
-    figures.forEach((figure) => {
-      figure.style.setProperty(
-        "--rooms-flip-deg",
-        String(-direction * ROOMS_FLIP_DEG),
-      );
-      figure.classList.add("is-flip-out");
-    });
-
-    setTimeout(() => {
-      roomsSlideIndex = newIndex;
-      applyRoomsSlideContent();
-
-      figures.forEach((figure) => {
-        figure.classList.add("is-flip-instant");
-        figure.classList.remove("is-flip-out");
-        figure.style.setProperty(
-          "--rooms-flip-deg",
-          String(direction * ROOMS_FLIP_DEG),
-        );
-      });
-
-      requestAnimationFrame(() => {
-        figures.forEach((figure) => {
-          figure.classList.remove("is-flip-instant");
-          figure.style.setProperty("--rooms-flip-deg", "0");
-        });
-
-        setTimeout(() => {
-          updateRoomsNavState();
-          roomsIsAnimating = false;
-        }, ROOMS_FADE_MS);
-      });
-    }, ROOMS_FADE_MS);
+    roomsNextBtn.disabled = roomsSlideIndex === items.length - 1;
   };
 
   const goToRoomsSlide = (newIndex) => {
     if (roomsIsAnimating || newIndex === roomsSlideIndex) return;
+    if (newIndex < 0 || newIndex > items.length - 1) return;
 
     roomsIsAnimating = true;
     roomsPrevBtn.disabled = true;
     roomsNextBtn.disabled = true;
 
-    if (ROOMS_TRANSITION_VARIANT === "slide") {
-      goToRoomsSlideSlide(newIndex);
-    } else if (ROOMS_TRANSITION_VARIANT === "flip") {
-      goToRoomsSlideFlip(newIndex);
-    } else {
-      goToRoomsSlideFade(newIndex);
-    }
+    const direction = newIndex > roomsSlideIndex ? 1 : -1;
+
+    // 1. Уводим текущие видимые изображения (затухание + сдвиг/переворот).
+    visibleFigures().forEach((figure) => {
+      if (cfg) {
+        figure.style.setProperty(cfg.prop, String(-direction * cfg.amount));
+      }
+      figure.classList.add("is-fading");
+    });
+
+    setTimeout(() => {
+      // 2. Переставляем активный/предактивный на новые слайды.
+      roomsSlideIndex = newIndex;
+      setActive(roomsSlideIndex);
+
+      // 3. Новые изображения ставим в стартовое положение без анимации.
+      const figures = visibleFigures();
+      figures.forEach((figure) => {
+        figure.classList.add("is-instant");
+        if (cfg) {
+          // slide/flip: появляются на противоположном сдвиге/угле, но видимые.
+          figure.style.setProperty(cfg.prop, String(direction * cfg.amount));
+          figure.classList.remove("is-fading");
+        } else {
+          // fade: появляются прозрачными и проявляются.
+          figure.classList.add("is-fading");
+        }
+      });
+
+      // 4. Возвращаем в исходное положение с анимацией.
+      requestAnimationFrame(() => {
+        figures.forEach((figure) => {
+          figure.classList.remove("is-instant");
+          if (cfg) {
+            figure.style.setProperty(cfg.prop, "0");
+          } else {
+            figure.classList.remove("is-fading");
+          }
+        });
+
+        setTimeout(() => {
+          updateRoomsNavState();
+          roomsIsAnimating = false;
+        }, ROOMS_FADE_MS);
+      });
+    }, ROOMS_FADE_MS);
   };
 
   roomsPrevBtn.addEventListener("click", () => {
@@ -381,7 +265,7 @@ const initRoomsSlider = () => {
     goToRoomsSlide(roomsSlideIndex + 1);
   });
 
-  applyRoomsSlideContent();
+  setActive(roomsSlideIndex);
   updateRoomsNavState();
 };
 
@@ -1093,7 +977,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initBookingDates();
   initPhoneMasks();
   initRoomsTabs();
-  initRoomsSlider();
   initPlanTitle();
   initHotelSlider();
   initChiboSlider();

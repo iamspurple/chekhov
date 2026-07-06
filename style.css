@@ -798,27 +798,57 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.rooms-slider {
-  overflow: hidden;
+.rooms-slider-wrap {
   width: 100%;
-  display: flex;
-  align-items: center;
+  overflow: hidden;
+  display: grid;
+  justify-items: center;
   justify-content: center;
+  grid-template-columns: min(50vw, 840px) min(40vw, 670px);
+  column-gap: clamp(15px, 1.56vw, 30px);
+  row-gap: clamp(15px, 1.56vw, 30px);
+  align-items: start;
+}
+
+.rooms-slider-wrap.is-hidden {
+  display: none;
+}
+
+.rooms-slider {
+  display: contents;
 }
 
 .rooms-item {
-  display: grid;
-  justify-items: center;
-  grid-template-columns: min(50vw, 840px) min(40vw, 670px);
-  gap: clamp(15px, 1.56vw, 30px);
+  display: none;
 }
 
-.rooms-card {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  perspective: 1000px;
+.rooms-item.is-active,
+.rooms-item.is-preactive {
+  display: contents;
+}
+
+.rooms-item.is-active .rooms-card-image {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.rooms-item.is-active .rooms-item-desc {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.rooms-item.is-preactive .rooms-card-image {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+}
+
+.rooms-item.is-preactive .rooms-item-desc {
+  display: none;
+}
+
+.rooms-item.is-preactive .rooms-card-btn {
+  display: none;
 }
 
 .rooms-card-image {
@@ -828,18 +858,16 @@
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
-  transform: translateX(calc(var(--rooms-slide-x, 0) * 1px))
+  transform: perspective(1000px)
+    translateX(calc(var(--rooms-slide-x, 0) * 1px))
     rotateY(calc(var(--rooms-flip-deg, 0) * 1deg));
 }
 
-.rooms-card-image.is-fading,
-.rooms-card-image.is-slide-out,
-.rooms-card-image.is-flip-out {
+.rooms-card-image.is-fading {
   opacity: 0;
 }
 
-.rooms-card-image.is-slide-instant,
-.rooms-card-image.is-flip-instant {
+.rooms-card-image.is-instant {
   transition: none;
 }
 
@@ -867,7 +895,7 @@
   gap: clamp(24px, 3.54vw, 68px);
 }
 
-.rooms-card-name.second {
+.rooms-item.is-preactive .rooms-card-name {
   padding-right: clamp(15px, 1.56vw, 30px);
 }
 
@@ -896,6 +924,9 @@
 }
 
 .rooms-slider-controls {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
   display: flex;
   gap: clamp(3px, 0.26vw, 5px);
 }
@@ -3889,41 +3920,28 @@
     height: 38px;
   }
 
-  .rooms-slider {
-    display: flex;
-    overflow: hidden;
-  }
-
-  .rooms-item {
-    width: 100%;
-    padding-left: 16px;
+  .rooms-slider-wrap {
     grid-template-columns: calc(100% - 20px) auto;
     column-gap: 8px;
     row-gap: 20px;
+    padding-left: 16px;
     justify-items: stretch;
+    justify-content: start;
   }
 
-  .rooms-card.main {
-    grid-column: 1;
-    grid-row: 1;
+  .rooms-item.is-active .rooms-card-image {
     width: 100%;
     height: auto;
   }
 
-  .rooms-card.second {
-    display: contents;
-  }
-
-  .rooms-card.second .rooms-card-image {
-    grid-column: 2;
-    grid-row: 1;
+  .rooms-item.is-preactive .rooms-card-image {
     width: 206px;
-    align-self: start;
   }
 
   .rooms-slider-controls {
     grid-column: 1;
     grid-row: 3;
+    align-self: auto;
     justify-content: center;
   }
 
