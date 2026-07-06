@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Чехов — Бутик-отель</title>
-    <link rel="stylesheet" href="style.css?v=5" />
+    <link rel="stylesheet" href="style.css?v=6" />
     <script src="https://api-maps.yandex.ru/v3/?apikey=f9a6dbbb-8eee-45ae-bed6-19918f52ed17&lang=ru_RU"></script>
     <script>
       (() => {
@@ -15,6 +15,11 @@
           ) {
             document.documentElement.classList.add("intro-active");
             sessionStorage.setItem("intro-seen", "1");
+            // Страховка: даже если script.js не загрузится/закэшируется/упадёт,
+            // интро гарантированно снимется и не заморозит страницу навсегда.
+            setTimeout(() => {
+              document.documentElement.classList.remove("intro-active");
+            }, 5000);
           }
         } catch (e) {}
       })();
@@ -3832,6 +3837,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/imask@7/dist/imask.min.js"></script>
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=6"></script>
   </body>
 </html>

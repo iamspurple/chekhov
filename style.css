@@ -5604,6 +5604,9 @@ button {
 }
 
 .intro-bg {
+  /* Тёмная заливка на случай, пока bg_1.webp ещё грузится, — чтобы оверлей
+     сразу был непрозрачным и hero не проступал сквозь него. */
+  background-color: #1a1712;
   filter: blur(22px) brightness(0.6);
   transform: scale(1.08);
 }
