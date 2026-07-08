@@ -265,6 +265,33 @@ const initRoomsSlider = (root, variant = "flip") => {
     goToRoomsSlide(roomsSlideIndex + 1);
   });
 
+  // Свайп на сенсорных устройствах: этот слайдер не прокручивается, поэтому
+  // по горизонтальному жесту просто переключаем слайд.
+  let swipeStartX = 0;
+  let swipeStartY = 0;
+  let swipeActive = false;
+
+  root.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "mouse") return;
+    swipeActive = true;
+    swipeStartX = e.clientX;
+    swipeStartY = e.clientY;
+  });
+
+  const endSwipe = (e) => {
+    if (!swipeActive) return;
+    swipeActive = false;
+    const dx = e.clientX - swipeStartX;
+    const dy = e.clientY - swipeStartY;
+    // Реагируем только на выраженный горизонтальный жест.
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+      goToRoomsSlide(roomsSlideIndex + (dx < 0 ? 1 : -1));
+    }
+  };
+
+  root.addEventListener("pointerup", endSwipe);
+  root.addEventListener("pointercancel", endSwipe);
+
   setActive(roomsSlideIndex);
   updateRoomsNavState();
 };
@@ -321,6 +348,73 @@ const initPlanTitle = () => {
   update();
 };
 
+// Свайп-прокрутка для слайдеров с overflow: hidden (навигация кнопками).
+// Работает только на сенсорных устройствах/пере — мышь на десктопе не трогаем,
+// чтобы не мешать кликам по кнопкам и ссылкам внутри слайдов.
+const enableSwipeScroll = (list) => {
+  if (!list) return;
+
+  let active = false;
+  let moved = false;
+  let startX = 0;
+  let startScroll = 0;
+
+  list.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "mouse") return;
+    active = true;
+    moved = false;
+    startX = e.clientX;
+    startScroll = list.scrollLeft;
+  });
+
+  list.addEventListener("pointermove", (e) => {
+    if (!active) return;
+    const dx = e.clientX - startX;
+    if (!moved) {
+      // Пока сдвиг мал — не перехватываем жест (вертикальный скролл страницы).
+      if (Math.abs(dx) < 8) return;
+      moved = true;
+      list.classList.add("is-swiping");
+      try {
+        list.setPointerCapture(e.pointerId);
+      } catch (_) {
+        /* некоторые браузеры бросают, если указатель уже неактивен */
+      }
+    }
+    list.scrollLeft = startScroll - dx;
+    e.preventDefault();
+  });
+
+  const end = (e) => {
+    if (!active) return;
+    active = false;
+    list.classList.remove("is-swiping");
+    try {
+      if (list.hasPointerCapture(e.pointerId)) {
+        list.releasePointerCapture(e.pointerId);
+      }
+    } catch (_) {
+      /* no-op */
+    }
+  };
+
+  list.addEventListener("pointerup", end);
+  list.addEventListener("pointercancel", end);
+
+  // Клик, завершивший свайп, не должен активировать вложенные ссылки/кнопки.
+  list.addEventListener(
+    "click",
+    (e) => {
+      if (moved) {
+        e.preventDefault();
+        e.stopPropagation();
+        moved = false;
+      }
+    },
+    true,
+  );
+};
+
 const initHotelSlider = () => {
   const list = document.querySelector(".hotel-slider-list");
   const prevBtn = document.querySelector(".hotel-slider-btn.prev");
@@ -367,6 +461,7 @@ const initHotelSlider = () => {
 
   window.addEventListener("resize", updateNavState);
   updateNavState();
+  enableSwipeScroll(list);
 };
 
 const initChiboSlider = () => {
@@ -418,6 +513,7 @@ const initChiboSlider = () => {
 
   window.addEventListener("resize", updateNavState);
   updateNavState();
+  enableSwipeScroll(list);
 };
 
 const initButtonSlider = (listSelector, prevSelector, nextSelector) => {
@@ -469,6 +565,7 @@ const initButtonSlider = (listSelector, prevSelector, nextSelector) => {
 
   window.addEventListener("resize", updateNavState);
   updateNavState();
+  enableSwipeScroll(list);
 };
 
 const initAdvantagesMobSlider = () => {
@@ -928,6 +1025,41 @@ const initMap = () => {
   const COORDS = [38.933613, 47.21283];
   const CENTER = [38.935383, 47.209512];
 
+  const SIGHTS = [
+    {
+      coordinates: [38.941752, 47.214336],
+      label: "Пушкинская набережная",
+      image: "/assets/images/sightseeing/coastline.png",
+    },
+    {
+      coordinates: [38.926166, 47.220391],
+      label: "Парк\nим. Горького",
+      image: "/assets/images/sightseeing/park.png",
+    },
+    {
+      coordinates: [38.921042, 47.218612],
+      label: "Музей\n«Градостроительство и быт»",
+      image: "/assets/images/sightseeing/museum.png",
+    },
+  ];
+
+  // Отдельный тип меток — POI-карточка со звездой на синем кружке,
+  // названием + рейтингом и категорией (как в Яндекс.Картах).
+  const POIS = [
+    {
+      coordinates: [38.933708, 47.210754],
+      title: "Дом Раневской",
+      rating: "5",
+      category: "Достопримечательность",
+    },
+    {
+      coordinates: [38.922274, 47.210562],
+      title: "А.П. Чехов",
+      rating: "4,4",
+      category: "Памятник, мемориал",
+    },
+  ];
+
   ymaps3.ready
     .then(() =>
       fetch("/assets/map-style.json").then((r) => (r.ok ? r.json() : null)),
@@ -938,11 +1070,12 @@ const initMap = () => {
         YMapDefaultSchemeLayer,
         YMapDefaultFeaturesLayer,
         YMapMarker,
+        YMapListener,
       } = ymaps3;
 
       const map = new YMap(mapEl, {
-        location: { center: CENTER, zoom: 14.4 },
-        behaviors: ["drag", "pinchZoom", "dblClick"],
+        location: { center: CENTER, zoom: 14 },
+        behaviors: ["drag", "pinchZoom", "dblClick", "scrollZoom"],
       });
 
       map.addChild(
@@ -964,6 +1097,72 @@ const initMap = () => {
       });
 
       map.addChild(new YMapMarker({ coordinates: COORDS }, markerEl));
+
+      const SIGHT_MIN_ZOOM = 14;
+      const sightEls = [];
+
+      const zoomTo = (coordinates) => {
+        map.setLocation({ center: coordinates, zoom: 17, duration: 500 });
+      };
+
+      SIGHTS.forEach((sight) => {
+        const el = document.createElement("div");
+        el.className = "sight-marker";
+        const labelHtml = sight.label
+          .split("\n")
+          .map((line) => `<span>${line}</span>`)
+          .join("");
+        const alt = sight.label.replace(/\n/g, " ");
+        el.innerHTML =
+          '<div class="sight-marker__pin">' +
+          `<img src="${sight.image}" alt="${alt}" />` +
+          "</div>" +
+          `<span class="sight-marker__label">${labelHtml}</span>`;
+
+        el.addEventListener("click", () => zoomTo(sight.coordinates));
+
+        sightEls.push(el);
+        map.addChild(new YMapMarker({ coordinates: sight.coordinates }, el));
+      });
+
+      const STAR_SVG =
+        '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<path d="M4.854 17.4993L6.20817 11.6452L1.6665 7.70768L7.6665 7.18685L9.99984 1.66602L12.3332 7.18685L18.3332 7.70768L13.7915 11.6452L15.1457 17.4993L9.99984 14.3952L4.854 17.4993Z" fill="#ffffff"/>' +
+        "</svg>";
+
+      POIS.forEach((poi) => {
+        const el = document.createElement("div");
+        el.className = "poi-marker";
+        el.innerHTML =
+          `<div class="poi-marker__icon">${STAR_SVG}</div>` +
+          '<div class="poi-marker__body">' +
+          '<div class="poi-marker__title">' +
+          `<span>${poi.title}</span>` +
+          `<span class="poi-marker__rating">★ ${poi.rating}</span>` +
+          "</div>" +
+          `<div class="poi-marker__category">${poi.category}</div>` +
+          "</div>";
+
+        el.addEventListener("click", () => zoomTo(poi.coordinates));
+
+        sightEls.push(el);
+        map.addChild(new YMapMarker({ coordinates: poi.coordinates }, el));
+      });
+
+      // Метки достопримечательностей видны только при близком зуме.
+      const updateSightsVisibility = () => {
+        const visible = map.zoom > SIGHT_MIN_ZOOM;
+        sightEls.forEach((el) => {
+          el.classList.toggle("is-hidden", !visible);
+        });
+      };
+
+      updateSightsVisibility();
+      map.addChild(
+        new YMapListener({
+          onUpdate: updateSightsVisibility,
+        }),
+      );
     })
     .catch((e) => {
       console.error("Ошибка инициализации Яндекс.Карты:", e);

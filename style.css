@@ -1308,8 +1308,8 @@ button {
 }
 
 .city-image.rounded.top {
-  border-top-right-radius: 100%;
-  border-top-left-radius: 100%;
+  border-top-right-radius: 500px;
+  border-top-left-radius: 500px;
 }
 
 .city-image.top {
@@ -1317,8 +1317,8 @@ button {
 }
 
 .city-image.rounded.bottom {
-  border-bottom-right-radius: 100%;
-  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 500px;
+  border-bottom-left-radius: 500px;
   object-position: 30% center;
 }
 
@@ -1496,6 +1496,26 @@ button {
 .hotel-slider-track {
   overflow: hidden;
   width: 100%;
+}
+
+/* Слайдеры со свайпом: горизонтальный жест обрабатывает JS,
+   вертикальный — оставляем браузеру (скролл страницы). */
+.hotel-slider-list,
+.chibo-slider-list,
+.reviews-photo-list,
+.reviews-rate-list,
+.privileges-rest-list,
+.rooms-slider-wrap {
+  touch-action: pan-y;
+}
+
+.hotel-slider-list.is-swiping,
+.chibo-slider-list.is-swiping,
+.reviews-photo-list.is-swiping,
+.reviews-rate-list.is-swiping,
+.privileges-rest-list.is-swiping {
+  scroll-behavior: auto;
+  user-select: none;
 }
 
 .hotel-slider-list {
@@ -2381,6 +2401,116 @@ button {
   background-color: #1a1a1a;
   border: 2px solid #ffffff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.sight-marker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+
+  transform: translate(-50%, -17px);
+}
+
+.sight-marker.is-hidden {
+  display: none;
+}
+
+.sight-marker__pin {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #9a9a9a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.sight-marker__pin img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sight-marker__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  text-align: center;
+  color: #3d4650;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* POI-карточка: синий кружок со звездой + белая плашка. */
+.poi-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  /* Точка привязки — центр синего кружка. */
+  transform: translate(-19px, -50%);
+}
+
+.poi-marker.is-hidden {
+  display: none;
+}
+
+.poi-marker__icon {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #2b7cff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poi-marker__icon svg {
+  width: 55%;
+  height: 55%;
+  display: block;
+}
+
+.poi-marker__body {
+  margin-left: -14px;
+  padding: 5px 14px 5px 22px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+  white-space: nowrap;
+}
+
+.poi-marker__title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #1a1a1a;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.poi-marker__rating {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.poi-marker__category {
+  color: #9aa0a8;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .location-list {
@@ -3562,20 +3692,26 @@ button {
     overflow: hidden;
   }
 
+  #map::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 7%;
+    background: linear-gradient(180deg, white 0%, transparent 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+
   #map::after {
     content: "";
     display: block;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      180deg,
-      white 0%,
-      transparent 7%,
-      transparent 93%,
-      white 100%
-    );
+    height: 7%;
+    background: linear-gradient(180deg, transparent 0%, white 100%);
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     z-index: 2;
   }
@@ -4464,6 +4600,7 @@ button {
 
   .privileges-wrapper {
     gap: 60px;
+    padding-bottom: 0;
   }
 
   .privileges-title {
@@ -4673,6 +4810,7 @@ button {
   .faq {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 30px;
     background: url(/assets/images/faq-bg.png) center/contain no-repeat;
     background-position: left top;
@@ -4825,7 +4963,8 @@ button {
   }
 
   .footer-legal {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    align-items: center;
     gap: 12px;
   }
 }
