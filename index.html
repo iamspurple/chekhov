@@ -21,8 +21,6 @@
           ) {
             document.documentElement.classList.add("intro-active");
             sessionStorage.setItem("intro-seen", "1");
-            // Страховка: даже если script.js не загрузится/закэшируется/упадёт,
-            // интро гарантированно снимется и не заморозит страницу навсегда.
             setTimeout(() => {
               document.documentElement.classList.remove("intro-active");
             }, 5000);

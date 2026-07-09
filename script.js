@@ -132,11 +132,7 @@ const initRoomsTabs = () => {
   const wraps = Array.from(document.querySelectorAll(".rooms-slider-wrap"));
   if (!tabs.length || !wraps.length) return;
 
-  // Каждый wrap — самостоятельный слайдер со своими слайдами и кнопками.
-  // Первым трём категориям назначаем разные варианты анимации для теста,
-  // остальным — flip по умолчанию.
-  const roomsVariants = ["flip", "slide", "fade"];
-  wraps.forEach((wrap, i) => initRoomsSlider(wrap, roomsVariants[i] ?? "flip"));
+  wraps.forEach((wrap) => initRoomsSlider(wrap));
 
   const activate = (index) => {
     tabs.forEach((tab, i) => tab.classList.toggle("active", i === index));
@@ -150,21 +146,10 @@ const initRoomsTabs = () => {
   activate(0);
 };
 
-// Заготовленные варианты перехода между слайдами.
-// fade  — простое затухание;
-// slide — сдвиг по X с затуханием;
-// flip  — переворот (rotateY) с затуханием.
 const ROOMS_FADE_MS = 300;
-const ROOMS_FLIP_DEG = 22;
 const ROOMS_SLIDE_OFFSET = 24;
 
-const ROOMS_TRANSFORMS = {
-  fade: null,
-  slide: { prop: "--rooms-slide-x", amount: ROOMS_SLIDE_OFFSET },
-  flip: { prop: "--rooms-flip-deg", amount: ROOMS_FLIP_DEG },
-};
-
-const initRoomsSlider = (root, variant = "flip") => {
+const initRoomsSlider = (root) => {
   if (!root) return;
 
   const items = Array.from(root.querySelectorAll(".rooms-item"));
@@ -173,17 +158,9 @@ const initRoomsSlider = (root, variant = "flip") => {
   const roomsPrevBtn = root.querySelector(".rooms-slider-btn.prev");
   const roomsNextBtn = root.querySelector(".rooms-slider-btn.next");
 
-  // fade намеренно даёт null, поэтому проверяем именно наличие ключа,
-  // а не «истинность» значения (иначе fade откатился бы к flip).
-  const cfg =
-    variant in ROOMS_TRANSFORMS
-      ? ROOMS_TRANSFORMS[variant]
-      : ROOMS_TRANSFORMS.flip;
-
   let roomsSlideIndex = 0;
   let roomsIsAnimating = false;
 
-  // Изображения активного и предактивного слайдов (те, что сейчас видны).
   const visibleFigures = () =>
     items
       .filter((item) => item.matches(".is-active, .is-preactive"))
@@ -211,42 +188,32 @@ const initRoomsSlider = (root, variant = "flip") => {
 
     const direction = newIndex > roomsSlideIndex ? 1 : -1;
 
-    // 1. Уводим текущие видимые изображения (затухание + сдвиг/переворот).
     visibleFigures().forEach((figure) => {
-      if (cfg) {
-        figure.style.setProperty(cfg.prop, String(-direction * cfg.amount));
-      }
+      figure.style.setProperty(
+        "--rooms-slide-x",
+        String(-direction * ROOMS_SLIDE_OFFSET)
+      );
       figure.classList.add("is-fading");
     });
 
     setTimeout(() => {
-      // 2. Переставляем активный/предактивный на новые слайды.
       roomsSlideIndex = newIndex;
       setActive(roomsSlideIndex);
 
-      // 3. Новые изображения ставим в стартовое положение без анимации.
       const figures = visibleFigures();
       figures.forEach((figure) => {
         figure.classList.add("is-instant");
-        if (cfg) {
-          // slide/flip: появляются на противоположном сдвиге/угле, но видимые.
-          figure.style.setProperty(cfg.prop, String(direction * cfg.amount));
-          figure.classList.remove("is-fading");
-        } else {
-          // fade: появляются прозрачными и проявляются.
-          figure.classList.add("is-fading");
-        }
+        figure.style.setProperty(
+          "--rooms-slide-x",
+          String(direction * ROOMS_SLIDE_OFFSET)
+        );
+        figure.classList.remove("is-fading");
       });
 
-      // 4. Возвращаем в исходное положение с анимацией.
       requestAnimationFrame(() => {
         figures.forEach((figure) => {
           figure.classList.remove("is-instant");
-          if (cfg) {
-            figure.style.setProperty(cfg.prop, "0");
-          } else {
-            figure.classList.remove("is-fading");
-          }
+          figure.style.setProperty("--rooms-slide-x", "0");
         });
 
         setTimeout(() => {
@@ -265,8 +232,6 @@ const initRoomsSlider = (root, variant = "flip") => {
     goToRoomsSlide(roomsSlideIndex + 1);
   });
 
-  // Свайп на сенсорных устройствах: этот слайдер не прокручивается, поэтому
-  // по горизонтальному жесту просто переключаем слайд.
   let swipeStartX = 0;
   let swipeStartY = 0;
   let swipeActive = false;
@@ -283,7 +248,6 @@ const initRoomsSlider = (root, variant = "flip") => {
     swipeActive = false;
     const dx = e.clientX - swipeStartX;
     const dy = e.clientY - swipeStartY;
-    // Реагируем только на выраженный горизонтальный жест.
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
       goToRoomsSlide(roomsSlideIndex + (dx < 0 ? 1 : -1));
     }
@@ -348,9 +312,6 @@ const initPlanTitle = () => {
   update();
 };
 
-// Свайп-прокрутка для слайдеров с overflow: hidden (навигация кнопками).
-// Работает только на сенсорных устройствах/пере — мышь на десктопе не трогаем,
-// чтобы не мешать кликам по кнопкам и ссылкам внутри слайдов.
 const enableSwipeScroll = (list) => {
   if (!list) return;
 
@@ -371,15 +332,12 @@ const enableSwipeScroll = (list) => {
     if (!active) return;
     const dx = e.clientX - startX;
     if (!moved) {
-      // Пока сдвиг мал — не перехватываем жест (вертикальный скролл страницы).
       if (Math.abs(dx) < 8) return;
       moved = true;
       list.classList.add("is-swiping");
       try {
         list.setPointerCapture(e.pointerId);
-      } catch (_) {
-        /* некоторые браузеры бросают, если указатель уже неактивен */
-      }
+      } catch (_) {}
     }
     list.scrollLeft = startScroll - dx;
     e.preventDefault();
@@ -393,15 +351,12 @@ const enableSwipeScroll = (list) => {
       if (list.hasPointerCapture(e.pointerId)) {
         list.releasePointerCapture(e.pointerId);
       }
-    } catch (_) {
-      /* no-op */
-    }
+    } catch (_) {}
   };
 
   list.addEventListener("pointerup", end);
   list.addEventListener("pointercancel", end);
 
-  // Клик, завершивший свайп, не должен активировать вложенные ссылки/кнопки.
   list.addEventListener(
     "click",
     (e) => {
@@ -1043,8 +998,6 @@ const initMap = () => {
     },
   ];
 
-  // Отдельный тип меток — POI-карточка со звездой на синем кружке,
-  // названием + рейтингом и категорией (как в Яндекс.Картах).
   const POIS = [
     {
       coordinates: [38.933708, 47.210754],
@@ -1149,7 +1102,6 @@ const initMap = () => {
         map.addChild(new YMapMarker({ coordinates: poi.coordinates }, el));
       });
 
-      // Метки достопримечательностей видны только при близком зуме.
       const updateSightsVisibility = () => {
         const visible = map.zoom > SIGHT_MIN_ZOOM;
         sightEls.forEach((el) => {
@@ -1170,7 +1122,6 @@ const initMap = () => {
 };
 
 const initFormReveal = () => {
-  // Только десктоп: формы (кроме plan-form) прилетают снизу при скролле.
   if (!window.matchMedia("(min-width: 1025px)").matches) return;
   if (typeof IntersectionObserver === "undefined") return;
 
@@ -1179,7 +1130,6 @@ const initFormReveal = () => {
   );
   if (!wrappers.length) return;
 
-  // Включаем скрытое стартовое состояние только когда наблюдатель готов.
   document.documentElement.classList.add("forms-reveal-ready");
 
   const observer = new IntersectionObserver(
@@ -1198,14 +1148,12 @@ const initFormReveal = () => {
 };
 
 const initLogosReveal = () => {
-  // Только десктоп: логотипы партнёров прилетают справа при скролле.
   if (!window.matchMedia("(min-width: 1025px)").matches) return;
   if (typeof IntersectionObserver === "undefined") return;
 
   const list = document.querySelector(".privileges-rest-list");
   if (!list) return;
 
-  // Включаем скрытое стартовое состояние только когда наблюдатель готов.
   document.documentElement.classList.add("logos-reveal-ready");
 
   const observer = new IntersectionObserver(
